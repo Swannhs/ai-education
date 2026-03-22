@@ -38,6 +38,8 @@ import '../../features/tests/screens/test_result_screen.dart';
 
 import '../../features/analytics/screens/analytics_screen.dart';
 
+import '../../features/profile/screens/settings_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
@@ -62,6 +64,9 @@ class AppRouter {
   static const String weakTopics = '/weak-topics';
   static const String testHistory = '/test-history';
   static const String profile = '/profile';
+  static const String settings = '/settings';
+  static const String subscription = '/subscription';
+  static const String examPreferences = '/exam-preferences';
   static const String routine = '/routine';
   static const String learn = '/learn';
 
@@ -89,6 +94,9 @@ class AppRouter {
     weakTopics: (context) => const WeakTopicsAnalysisScreen(),
     testHistory: (context) => const TestHistoryScreen(),
     profile: (context) => const ProfileScreen(),
+    settings: (context) => const SettingsScreen(),
+    subscription: (context) => const SubscriptionPackagesScreen(),
+    examPreferences: (context) => const ExamPreferencesScreen(),
     routine: (context) => const DailyRoutineScreen(),
     learn: (context) => const LearnLibraryScreen(),
   };
@@ -141,6 +149,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const TestHistoryScreen());
       case profile:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
+      case settings:
+        return MaterialPageRoute(builder: (_) => const SettingsScreen());
+      case subscription:
+        return MaterialPageRoute(builder: (_) => const SubscriptionPackagesScreen());
+      case examPreferences:
+        return MaterialPageRoute(builder: (_) => const ExamPreferencesScreen());
       case routine:
         return MaterialPageRoute(builder: (_) => const DailyRoutineScreen());
       case learn:
