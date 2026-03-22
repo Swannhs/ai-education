@@ -18,6 +18,8 @@ import '../../features/routine/screens/daily_routine_screen.dart';
 
 import '../../features/practice/screens/learn_library_screen.dart';
 
+import '../../features/practice/screens/practice_result_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
@@ -25,6 +27,7 @@ class AppRouter {
   static const String forgotPassword = '/forgot-password';
   static const String home = '/home';
   static const String practice = '/practice';
+  static const String practiceResult = '/practice-result';
   static const String subjectDetail = '/subject-detail';
   static const String testList = '/test-list';
   static const String profile = '/profile';
@@ -38,6 +41,7 @@ class AppRouter {
     forgotPassword: (context) => const ForgotPasswordScreen(),
     home: (context) => const HomeScreen(),
     practice: (context) => const PracticeScreen(),
+    practiceResult: (context) => const PracticeResultScreen(),
     subjectDetail: (context) => const SubjectDetailScreen(),
     testList: (context) => const TestListScreen(),
     profile: (context) => const ProfileScreen(),
@@ -59,6 +63,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case practice:
         return MaterialPageRoute(builder: (_) => const PracticeScreen());
+      case practiceResult:
+        return MaterialPageRoute(builder: (_) => const PracticeResultScreen());
       case subjectDetail:
         return MaterialPageRoute(builder: (_) => const SubjectDetailScreen());
       case testList:
