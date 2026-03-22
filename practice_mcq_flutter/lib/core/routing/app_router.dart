@@ -36,6 +36,8 @@ import '../../features/tests/screens/live_test_screen.dart';
 
 import '../../features/tests/screens/test_result_screen.dart';
 
+import '../../features/analytics/screens/analytics_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
@@ -55,6 +57,10 @@ class AppRouter {
   static const String liveTest = '/live-test';
   static const String testResult = '/test-result';
   static const String meritList = '/merit-list';
+  static const String analytics = '/analytics';
+  static const String subjectPerformance = '/subject-performance';
+  static const String weakTopics = '/weak-topics';
+  static const String testHistory = '/test-history';
   static const String profile = '/profile';
   static const String routine = '/routine';
   static const String learn = '/learn';
@@ -78,6 +84,10 @@ class AppRouter {
     liveTest: (context) => const LiveTestScreen(),
     testResult: (context) => const TestResultScreen(),
     meritList: (context) => const MeritListScreen(),
+    analytics: (context) => const AnalyticsScreen(),
+    subjectPerformance: (context) => const SubjectPerformanceScreen(),
+    weakTopics: (context) => const WeakTopicsAnalysisScreen(),
+    testHistory: (context) => const TestHistoryScreen(),
     profile: (context) => const ProfileScreen(),
     routine: (context) => const DailyRoutineScreen(),
     learn: (context) => const LearnLibraryScreen(),
@@ -121,6 +131,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const TestResultScreen());
       case meritList:
         return MaterialPageRoute(builder: (_) => const MeritListScreen());
+      case analytics:
+        return MaterialPageRoute(builder: (_) => const AnalyticsScreen());
+      case subjectPerformance:
+        return MaterialPageRoute(builder: (_) => const SubjectPerformanceScreen());
+      case weakTopics:
+        return MaterialPageRoute(builder: (_) => const WeakTopicsAnalysisScreen());
+      case testHistory:
+        return MaterialPageRoute(builder: (_) => const TestHistoryScreen());
       case profile:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case routine:
