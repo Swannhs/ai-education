@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../core/routing/app_router.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
 import '../../practice/screens/practice_screen.dart';
-import '../../../core/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -225,11 +226,15 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(height: 20),
           ElevatedButton.icon(
             onPressed: () {
-              Navigator.pushNamed(context, '/practice');
+              Navigator.pushNamed(context, AppRouter.wrongAnswers);
             },
             icon: const Icon(Icons.play_arrow),
             label: const Text('Start Practice'),
-            style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF00695C)),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF00695C),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
           ),
         ],
       ),
@@ -251,7 +256,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildSubjectItem(BuildContext context, String name, IconData icon, Color color) {
     return InkWell(
-      onTap: () => Navigator.pushNamed(context, '/subject-detail'),
+      onTap: () => Navigator.pushNamed(context, AppRouter.subjectDetail),
       child: Container(
         width: 140,
         margin: const EdgeInsets.only(right: 16),

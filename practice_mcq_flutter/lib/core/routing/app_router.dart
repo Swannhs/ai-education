@@ -24,6 +24,10 @@ import '../../features/auth/screens/verify_email_screen.dart';
 
 import '../../features/practice/screens/topic_list_screen.dart';
 
+import '../../features/practice/screens/wrong_answers_screen.dart';
+
+import '../../features/practice/screens/lesson_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
@@ -35,6 +39,8 @@ class AppRouter {
   static const String practiceResult = '/practice-result';
   static const String subjectDetail = '/subject-detail';
   static const String topicList = '/topic-list';
+  static const String wrongAnswers = '/wrong-answers';
+  static const String lesson = '/lesson';
   static const String testList = '/test-list';
   static const String profile = '/profile';
   static const String routine = '/routine';
@@ -51,6 +57,8 @@ class AppRouter {
     practiceResult: (context) => const PracticeResultScreen(),
     subjectDetail: (context) => const SubjectDetailScreen(),
     topicList: (context) => const TopicListScreen(),
+    wrongAnswers: (context) => const WrongAnswersScreen(),
+    lesson: (context) => const LessonScreen(),
     testList: (context) => const TestListScreen(),
     profile: (context) => const ProfileScreen(),
     routine: (context) => const DailyRoutineScreen(),
@@ -79,6 +87,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SubjectDetailScreen());
       case topicList:
         return MaterialPageRoute(builder: (_) => const TopicListScreen());
+      case wrongAnswers:
+        return MaterialPageRoute(builder: (_) => const WrongAnswersScreen());
+      case lesson:
+        return MaterialPageRoute(builder: (_) => const LessonScreen());
       case testList:
         return MaterialPageRoute(builder: (_) => const TestListScreen());
       case profile:
