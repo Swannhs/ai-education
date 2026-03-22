@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/services/ai_service.dart';
-import '../../../core/models/ai_response.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/services/ai_service.dart';
+import '../../../../core/models/ai_response.dart';
 import '../providers/learn_provider.dart';
-import '../domain/learn_models.dart';
+import '../../domain/learn_models.dart';
 
 class LessonContentViewerScreen extends ConsumerStatefulWidget {
   final String topicId;
@@ -64,7 +64,7 @@ class _LessonContentViewerScreenState extends ConsumerState<LessonContentViewerS
                     const SizedBox(height: 32),
                     if (lesson.resources != null) _buildRelatedMaterials(lesson.resources!),
                     const SizedBox(height: 32),
-                    _buildAIExplanationShortcut(),
+                    _buildAIExplanationShortcut(context, lesson),
                   ],
                 ),
               ),
@@ -170,7 +170,7 @@ class _LessonContentViewerScreenState extends ConsumerState<LessonContentViewerS
     );
   }
 
-  Widget _buildAIExplanationShortcut() {
+  Widget _buildAIExplanationShortcut(BuildContext context, Lesson lesson) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(color: const Color(0xFFF1F8E9), borderRadius: BorderRadius.circular(16)),
@@ -183,7 +183,7 @@ class _LessonContentViewerScreenState extends ConsumerState<LessonContentViewerS
           ),
           const SizedBox(width: 8),
           TextButton(
-            onPressed: () => _showSimplifySheet(context),
+            onPressed: () => _showSimplifySheet(context, lesson.id),
             child: const Text('Ask AI', style: TextStyle(fontWeight: FontWeight.bold)),
           ),
         ],
@@ -191,13 +191,13 @@ class _LessonContentViewerScreenState extends ConsumerState<LessonContentViewerS
     );
   }
 
-  void _showSimplifySheet(BuildContext context) {
+  void _showSimplifySheet(BuildContext context, String lessonId) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => FutureBuilder<AIResponse>(
-        future: CoreAIService.getAIResponse('SIMPLIFY_LESSON', {}),
+        future: CoreAIService.getAIResponse(CoreAIService.simplifyLesson(lessonId, 'standard_explanation')),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return _buildLoadingSheet();

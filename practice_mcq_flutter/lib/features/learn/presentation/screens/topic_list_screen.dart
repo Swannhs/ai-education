@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/routing/app_router.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/routing/app_router.dart';
 import '../providers/learn_provider.dart';
-import '../domain/learn_models.dart';
+import '../../domain/learn_models.dart';
 
 class TopicListScreen extends ConsumerWidget {
   final String chapterId;

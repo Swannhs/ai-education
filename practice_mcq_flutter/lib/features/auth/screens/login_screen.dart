@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_theme.dart';
@@ -30,7 +31,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     // Listen to success state for navigation
     ref.listen<AuthState>(authProvider, (previous, next) {
       if (next.user != null) {
-        Navigator.of(context).pushReplacementNamed(AppRouter.home);
+        if (!next.onboardingComplete) {
+          Navigator.of(context).pushReplacementNamed(AppRouter.onboarding);
+        } else if (!next.examPreferencesComplete) {
+          Navigator.of(context).pushReplacementNamed(AppRouter.examPreferences);
+        } else {
+          Navigator.of(context).pushReplacementNamed(AppRouter.home);
+        }
       }
       if (next.error != null) {
         ScaffoldMessenger.of(context).showSnackBar(

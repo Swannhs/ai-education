@@ -1,13 +1,14 @@
 import 'dart:async';
 import '../models/ai_response.dart';
+import '../models/ai_request.dart';
 
 class CoreAIService {
   // Simulate network delay
-  static Future<AIResponse> getAIResponse(String actionType, Map<String, dynamic> context) async {
+  static Future<AIResponse> getAIResponse(AIRequest request) async {
     await Future.delayed(const Duration(milliseconds: 1500));
 
-    switch (actionType) {
-      case 'EXPLAIN_QUESTION':
+    switch (request.action) {
+      case AIAction.explainQuestion:
         return AIResponse.fromJson({
           "summary": "Your error came from misunderstanding present perfect continuous.",
           "why_correct": "Option B is correct because 'for + duration' (three years) requires the present perfect continuous tense.",
@@ -18,7 +19,7 @@ class CoreAIService {
           "next_action": {"type": "practice_topic", "topic_id": "tense-03"}
         });
 
-      case 'SIMPLIFY_LESSON':
+      case AIAction.simplifyLesson:
         return AIResponse.fromJson({
           "mode": "simplify",
           "response_title": "Shortcut Explanation",
@@ -32,7 +33,8 @@ class CoreAIService {
           "next_action": {"type": "practice_topic", "topic_id": "topic-1002"}
         });
 
-      case 'ANALYZE_PERFORMANCE':
+      case AIAction.analyzePerformance:
+      case AIAction.recommendNextAction:
         return AIResponse.fromJson({
           "headline": "Focus on Medieval Bengal today",
           "summary": "Overall summary: You missed 4 recent questions from this topic and have a mock test tomorrow.",
@@ -45,7 +47,48 @@ class CoreAIService {
         });
 
       default:
-        return AIResponse(summary: "General AI response for $actionType");
+        return AIResponse(summary: "General AI response for ${request.action.name}");
     }
+  }
+
+  // Builder helpers
+  static AIRequest explainQuestion({
+    required String id,
+    required String text,
+    required String selectedOption,
+    required String correctOption,
+    required String subject,
+    required String topic,
+  }) {
+    return AIRequest(
+      action: AIAction.explainQuestion,
+      context: {
+        'id': id,
+        'question': text,
+        'selected_option': selectedOption,
+        'correct_option': correctOption,
+        'subject': subject,
+        'topic': topic,
+      },
+    );
+  }
+
+  static AIRequest simplifyLesson(String lessonId, String contentParams) {
+    return AIRequest(
+      action: AIAction.simplifyLesson,
+      context: {
+        'lesson_id': lessonId,
+        'parameters': contentParams,
+      },
+    );
+  }
+
+  static AIRequest analyzePerformance(String userId) {
+    return AIRequest(
+      action: AIAction.analyzePerformance,
+      context: {
+        'user_id': userId,
+      },
+    );
   }
 }

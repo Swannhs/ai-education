@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data/practice_repository.dart';
-import '../domain/question.dart';
+import '../../data/practice_repository.dart';
+import '../../domain/question.dart';
 
 final practiceRepositoryProvider = Provider<PracticeRepository>((ref) {
   return MockPracticeRepository();
@@ -23,6 +23,7 @@ class PracticeState {
 
   Question? get currentQuestion => questions.isNotEmpty ? questions[currentIndex] : null;
   bool get isLastQuestion => currentIndex == questions.length - 1;
+  bool get isFinished => questions.isNotEmpty && selectedOptions.length == questions.length;
   int get score => selectedOptions.entries.where((e) => questions[e.key].correctOptionIndex == e.value).length;
 
   PracticeState copyWith({

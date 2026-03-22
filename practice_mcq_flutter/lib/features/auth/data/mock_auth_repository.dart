@@ -5,6 +5,7 @@ import '../domain/user.dart';
 class MockAuthRepository implements AuthRepository {
   final SharedPreferences _prefs;
   static const String _onboardingKey = 'onboarding_complete';
+  static const String _preferencesKey = 'exam_preferences_complete';
   static const String _userKey = 'user_session';
 
   MockAuthRepository(this._prefs);
@@ -13,7 +14,6 @@ class MockAuthRepository implements AuthRepository {
   Future<User?> currentUser() async {
     final userJson = _prefs.getString(_userKey);
     if (userJson != null) {
-      // For now, return a fixed mock user context if any session exists
       return User(id: '1', name: 'Sadek Rahman', email: 'sadek@example.com', targetExam: 'BCS');
     }
     return null;
@@ -48,5 +48,15 @@ class MockAuthRepository implements AuthRepository {
   @override
   Future<void> setOnboardingComplete(bool complete) async {
     await _prefs.setBool(_onboardingKey, complete);
+  }
+
+  @override
+  Future<bool> isExamPreferencesComplete() async {
+    return _prefs.getBool(_preferencesKey) ?? false;
+  }
+
+  @override
+  Future<void> setExamPreferencesComplete(bool complete) async {
+    await _prefs.setBool(_preferencesKey, complete);
   }
 }

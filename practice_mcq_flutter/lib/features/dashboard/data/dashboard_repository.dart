@@ -18,9 +18,9 @@ class MockDashboardRepository implements DashboardRepository {
         RoutineTask(title: 'English Grammar: Tense', subtitle: 'Practice Set 12', isCompleted: false),
       ],
       subjects: [
-        SubjectProgress(name: 'Bangla', lessonCount: 45, icon: 'book'),
-        SubjectProgress(name: 'English', lessonCount: 38, icon: 'translate'),
-        SubjectProgress(name: 'General Math', lessonCount: 52, icon: 'calculate'),
+        SubjectProgress(id: '1', name: 'Bangla', lessonCount: 45, icon: 'book'),
+        SubjectProgress(id: '2', name: 'English', lessonCount: 38, icon: 'translate'),
+        SubjectProgress(id: '3', name: 'General Math', lessonCount: 52, icon: 'calculate'),
       ],
     );
   }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/routing/app_router.dart';
-import '../../../core/services/ai_service.dart';
-import '../../../core/models/ai_response.dart';
-import '../domain/question.dart';
-import '../presentation/providers/practice_provider.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/routing/app_router.dart';
+import '../../../../core/services/ai_service.dart';
+import '../../../../core/models/ai_response.dart';
+import '../../domain/question.dart';
+import '../providers/practice_provider.dart';
 
 class PracticeScreen extends ConsumerWidget {
   final String topicId;
@@ -50,7 +50,7 @@ class PracticeScreen extends ConsumerWidget {
           const SizedBox(height: 32),
           _buildOptionsList(context, state, notifier, question),
           const SizedBox(height: 32),
-          _buildAIAssistantSection(context, question),
+          _buildAIAssistantSection(context, state, question),
         ],
       ),
     );
@@ -161,7 +161,8 @@ class PracticeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildAIAssistantSection(BuildContext context, Question question) {
+  Widget _buildAIAssistantSection(BuildContext context, PracticeState state, Question question) {
+    final int? selectedOptionIndex = state.selectedOptions[state.currentIndex];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -175,17 +176,17 @@ class PracticeScreen extends ConsumerWidget {
           crossAxisSpacing: 12,
           childAspectRatio: 2.5,
           children: [
-            _buildAIAction(context, 'Explain Answer', Icons.lightbulb_outline, Colors.blue, question),
-            _buildAIAction(context, 'Ask AI Tutor', Icons.psychology_outlined, Colors.purple, question),
-            _buildAIAction(context, 'Simplify Text', Icons.auto_awesome_outlined, Colors.green, question),
-            _buildAIAction(context, 'Voice Ask', Icons.mic_none, Colors.orange, question),
+            _buildAIAction(context, 'Explain Answer', Icons.lightbulb_outline, Colors.blue, question, selectedOptionIndex),
+            _buildAIAction(context, 'Ask AI Tutor', Icons.psychology_outlined, Colors.purple, question, selectedOptionIndex),
+            _buildAIAction(context, 'Simplify Text', Icons.auto_awesome_outlined, Colors.green, question, selectedOptionIndex),
+            _buildAIAction(context, 'Voice Ask', Icons.mic_none, Colors.orange, question, selectedOptionIndex),
           ],
         ),
       ],
     );
   }
 
-  Widget _buildAIAction(BuildContext context, String label, IconData icon, Color color, Question question) {
+  Widget _buildAIAction(BuildContext context, String label, IconData icon, Color color, Question question, int? selectedOptionIndex) {
     return InkWell(
       onTap: () {
         if (label == 'Voice Ask') {
@@ -193,7 +194,7 @@ class PracticeScreen extends ConsumerWidget {
         } else if (label == 'Ask AI Tutor') {
           Navigator.pushNamed(context, AppRouter.aiAssistant);
         } else {
-          _showAIExplanation(context, label, question);
+          _showAIExplanation(context, label, question, selectedOptionIndex);
         }
       },
       child: Container(
@@ -214,13 +215,20 @@ class PracticeScreen extends ConsumerWidget {
     );
   }
 
-  void _showAIExplanation(BuildContext context, String label, Question question) {
+  void _showAIExplanation(BuildContext context, String label, Question question, int? selectedOptionIndex) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => FutureBuilder<AIResponse>(
-        future: CoreAIService.getAIResponse('EXPLAIN_QUESTION', {'question': question.text}),
+        future: CoreAIService.getAIResponse(CoreAIService.explainQuestion(
+          id: question.id,
+          text: question.text,
+          selectedOption: selectedOptionIndex != null ? question.options[selectedOptionIndex] : 'None',
+          correctOption: question.options[question.correctOptionIndex],
+          subject: question.subject,
+          topic: question.topic,
+        )),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return _buildLoadingSheet();

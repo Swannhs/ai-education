@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../shared/widgets/app_bottom_nav.dart';
-import '../../../core/routing/app_router.dart';
-import '../../auth/presentation/providers/auth_provider.dart';
-import '../domain/performance_stats.dart';
-import '../presentation/providers/analytics_provider.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../shared/widgets/app_bottom_nav.dart';
+import '../../../../core/routing/app_router.dart';
+import '../../../auth/presentation/providers/auth_provider.dart';
+import '../../domain/performance_stats.dart';
+import '../providers/analytics_provider.dart';
 
 class AnalyticsScreen extends ConsumerWidget {
   const AnalyticsScreen({super.key});

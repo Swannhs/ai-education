@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../shared/widgets/app_bottom_nav.dart';
-import '../../../core/routing/app_router.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../shared/widgets/app_bottom_nav.dart';
+import '../../../../core/routing/app_router.dart';
 
 class PracticeResultScreen extends StatelessWidget {
   final int score;

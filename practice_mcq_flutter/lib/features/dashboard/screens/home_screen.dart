@@ -4,7 +4,7 @@ import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
 import '../../../shared/widgets/app_drawer.dart';
-import '../../practice/screens/practice_screen.dart';
+import '../../practice/presentation/screens/practice_screen.dart';
 import '../../../core/services/ai_service.dart';
 import '../../../core/models/ai_response.dart';
 import '../../auth/presentation/providers/auth_provider.dart';
@@ -180,7 +180,7 @@ class HomeScreen extends ConsumerWidget {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => FutureBuilder<AIResponse>(
-        future: CoreAIService.getAIResponse('ANALYZE_PERFORMANCE', {}),
+        future: CoreAIService.getAIResponse(CoreAIService.analyzePerformance('user_123')),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return _buildLoadingSheet();
@@ -349,7 +349,7 @@ class HomeScreen extends ConsumerWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: subjects.map((s) => _buildSubjectItem(context, s.name, _getIcon(s.icon), const Color(0xFFE3F2FD))).toList(),
+        children: subjects.map((s) => _buildSubjectItem(context, s.name, _getIcon(s.icon), const Color(0xFFE3F2FD), s.id)).toList(),
       ),
     );
   }
@@ -363,9 +363,9 @@ class HomeScreen extends ConsumerWidget {
     }
   }
 
-  Widget _buildSubjectItem(BuildContext context, String name, IconData icon, Color color) {
+  Widget _buildSubjectItem(BuildContext context, String name, IconData icon, Color color, String id) {
     return InkWell(
-      onTap: () => Navigator.pushNamed(context, AppRouter.subjectDetail),
+      onTap: () => Navigator.pushNamed(context, AppRouter.subjectDetail, arguments: id),
       child: Container(
         width: 140,
         margin: const EdgeInsets.only(right: 16),

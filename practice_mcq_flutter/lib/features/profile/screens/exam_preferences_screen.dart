@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/routing/app_router.dart';
+import '../../auth/presentation/providers/auth_provider.dart';
 
-class ExamPreferencesScreen extends StatefulWidget {
+class ExamPreferencesScreen extends ConsumerStatefulWidget {
   const ExamPreferencesScreen({super.key});
 
   @override
-  State<ExamPreferencesScreen> createState() => _ExamPreferencesScreenState();
+  ConsumerState<ExamPreferencesScreen> createState() => _ExamPreferencesScreenState();
 }
 
-class _ExamPreferencesScreenState extends State<ExamPreferencesScreen> {
+class _ExamPreferencesScreenState extends ConsumerState<ExamPreferencesScreen> {
   String selectedExam = 'BCS';
   String selectedLevel = 'Intermediate';
 
@@ -40,7 +42,12 @@ class _ExamPreferencesScreenState extends State<ExamPreferencesScreen> {
               _buildLevelOption('Advanced', 'Focus on complex analysis', Icons.workspace_premium_outlined),
               const SizedBox(height: 48),
               ElevatedButton(
-                onPressed: () => Navigator.pushReplacementNamed(context, AppRouter.home),
+                onPressed: () async {
+                  await ref.read(authProvider.notifier).completeExamPreferences();
+                  if (context.mounted) {
+                    Navigator.pushReplacementNamed(context, AppRouter.home);
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 56),
                   backgroundColor: const Color(0xFF006951),
@@ -51,7 +58,7 @@ class _ExamPreferencesScreenState extends State<ExamPreferencesScreen> {
                 child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text('Continue to Dashboard', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)), SizedBox(width: 8), Icon(Icons.arrow_forward, size: 20)]),
               ),
               const SizedBox(height: 24),
-              const Text('Step 1 of 3: Goal Setting', style: TextStyle(color: AppColors.textSecondary, fontSize: 11, fontWeight: FontWeight.bold)),
+              const Text('Step 1 of 1: Goal Setting', style: TextStyle(color: AppColors.textSecondary, fontSize: 11, fontWeight: FontWeight.bold)),
               const SizedBox(height: 40),
             ],
           ),

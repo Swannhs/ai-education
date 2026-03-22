@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data/learn_repository.dart';
-import '../domain/learn_models.dart';
+import '../../data/learn_repository.dart';
+import '../../domain/learn_models.dart';
 
 final learnRepositoryProvider = Provider<LearnRepository>((ref) {
   return MockLearnRepository();

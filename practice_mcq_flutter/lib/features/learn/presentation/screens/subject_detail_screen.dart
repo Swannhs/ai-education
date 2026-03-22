@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/theme/app_theme.dart';
-import '../../../core/routing/app_router.dart';
-import '../../../shared/widgets/app_bottom_nav.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/routing/app_router.dart';
+import '../../../../shared/widgets/app_bottom_nav.dart';
 import '../providers/learn_provider.dart';
-import '../../learn/domain/learn_models.dart';
+import '../../domain/learn_models.dart';
 
 class SubjectDetailScreen extends ConsumerWidget {
   final String subjectId;

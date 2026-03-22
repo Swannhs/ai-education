@@ -23,9 +23,10 @@ class RoutineTask {
 }
 
 class SubjectProgress {
+  final String id;
   final String name;
   final int lessonCount;
   final String icon;
 
-  SubjectProgress({required this.name, required this.lessonCount, required this.icon});
+  SubjectProgress({required this.id, required this.name, required this.lessonCount, required this.icon});
 }

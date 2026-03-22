@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/routing/app_router.dart';
@@ -11,12 +12,14 @@ class SplashScreen extends ConsumerWidget {
     // Listen to auth state changes to navigate
     ref.listen<AuthState>(authProvider, (previous, next) {
       if (!next.isLoading) {
-        if (next.user != null) {
-          Navigator.pushReplacementNamed(context, AppRouter.home);
+        if (next.user == null) {
+          Navigator.pushReplacementNamed(context, AppRouter.login);
         } else if (!next.onboardingComplete) {
+          Navigator.pushReplacementNamed(context, AppRouter.onboarding);
+        } else if (!next.examPreferencesComplete) {
           Navigator.pushReplacementNamed(context, AppRouter.examPreferences);
         } else {
-          Navigator.pushReplacementNamed(context, AppRouter.login);
+          Navigator.pushReplacementNamed(context, AppRouter.home);
         }
       }
     });

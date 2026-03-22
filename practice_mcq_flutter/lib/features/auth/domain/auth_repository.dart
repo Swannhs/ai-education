@@ -7,4 +7,6 @@ abstract class AuthRepository {
   Future<void> signOut();
   Future<bool> isOnboardingComplete();
   Future<void> setOnboardingComplete(bool complete);
+  Future<bool> isExamPreferencesComplete();
+  Future<void> setExamPreferencesComplete(bool complete);
 }

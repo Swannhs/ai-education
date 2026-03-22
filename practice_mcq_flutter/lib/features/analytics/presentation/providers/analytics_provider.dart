@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../auth/presentation/providers/auth_provider.dart';
-import '../data/analytics_repository.dart';
-import '../domain/performance_stats.dart';
+import '../../../auth/presentation/providers/auth_provider.dart';
+import '../../data/analytics_repository.dart';
+import '../../domain/performance_stats.dart';
 
 final analyticsRepositoryProvider = Provider<AnalyticsRepository>((ref) {
   return MockAnalyticsRepository();
