@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#005234",
+              "tertiary-fixed-dim": "#ffb950",
+              "outline": "#6d7a71",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#afc6ff",
+              "background": "#f6f9ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#d9eafa",
+              "tertiary-fixed": "#ffddb3",
+              "surface-variant": "#d4e5f5",
+              "on-surface": "#0d1d29",
+              "surface-container": "#e0f0ff",
+              "inverse-primary": "#5adda0",
+              "primary": "#006c46",
+              "on-primary-fixed": "#002112",
+              "surface": "#f6f9ff",
+              "on-tertiary-container": "#3e2700",
+              "surface-container-highest": "#d4e5f5",
+              "tertiary-container": "#c78500",
+              "on-surface-variant": "#3d4a41",
+              "on-primary-container": "#00321f",
+              "surface-dim": "#cbdcec",
+              "surface-container-low": "#ebf5ff",
+              "secondary-fixed": "#d9e2ff",
+              "error": "#ba1a1a",
+              "surface-tint": "#006c46",
+              "on-tertiary-fixed": "#291800",
+              "primary-container": "#00a76f",
+              "on-secondary-container": "#002963",
+              "on-tertiary-fixed-variant": "#624000",
+              "on-error": "#ffffff",
+              "secondary": "#0459c5",
+              "outline-variant": "#bccabf",
+              "primary-fixed-dim": "#5adda0",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#22323e",
+              "on-primary": "#ffffff",
+              "on-background": "#0d1d29",
+              "secondary-container": "#5790ff",
+              "inverse-on-surface": "#e6f2ff",
+              "primary-fixed": "#79fabb",
+              "on-secondary-fixed": "#001a43",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#f6f9ff",
+              "tertiary": "#825500",
+              "on-secondary-fixed-variant": "#004398"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Public Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16 bg-white dark:bg-slate-900">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Public_Sans'] text-base font-semibold text-slate-900 dark:text-slate-100">Exam Review</h1>
+</div>
+<button class="text-[#00A76F] dark:text-[#00A76F] font-semibold text-sm hover:opacity-80 transition-opacity">
+            Finish
+        </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 mb-20 px-6 py-8 max-w-5xl mx-auto w-full">
+<!-- Progress Section -->
+<section class="mb-10">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="text-on-surface-variant font-label text-sm mb-1">Overall Progress</p>
+<h2 class="text-3xl font-bold font-headline text-on-surface tracking-tight">156<span class="text-on-surface-variant/40 font-medium">/200</span></h2>
+</div>
+<div class="text-right">
+<span class="text-primary font-bold text-sm">78% Complete</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</section>
+<!-- Legend Chips -->
+<section class="flex flex-wrap gap-3 mb-8">
+<div class="flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
+<span class="text-xs font-semibold font-label text-on-primary-container">Answered</span>
+</div>
+<div class="flex items-center gap-2 bg-tertiary-container/10 border border-tertiary-container/20 px-4 py-2 rounded-full">
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></div>
+<span class="text-xs font-semibold font-label text-on-tertiary-container">Marked for Review</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-highest border border-outline-variant/30 px-4 py-2 rounded-full">
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<span class="text-xs font-semibold font-label text-on-surface-variant">Unanswered</span>
+</div>
+</section>
+<!-- Question Grid -->
+<section class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline font-bold text-on-surface">Question Palette</h3>
+<span class="text-xs font-label text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">Section 1: General Science</span>
+</div>
+<div class="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-3">
+<!-- Question 1-3: Answered -->
+<button class="aspect-square flex items-center justify-center rounded-xl bg-primary-container text-on-primary font-bold text-sm hover:opacity-80 transition-all active:scale-90">1</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-primary-container text-on-primary font-bold text-sm hover:opacity-80 transition-all active:scale-90">2</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-primary-container text-on-primary font-bold text-sm hover:opacity-80 transition-all active:scale-90">3</button>
+<!-- Question 4: Marked -->
+<button class="aspect-square flex items-center justify-center rounded-xl bg-tertiary-container text-on-tertiary font-bold text-sm hover:opacity-80 transition-all active:scale-90">4</button>
+<!-- Question 5-7: Answered -->
+<button class="aspect-square flex items-center justify-center rounded-xl bg-primary-container text-on-primary font-bold text-sm hover:opacity-80 transition-all active:scale-90">5</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-primary-container text-on-primary font-bold text-sm hover:opacity-80 transition-all active:scale-90">6</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-primary-container text-on-primary font-bold text-sm hover:opacity-80 transition-all active:scale-90">7</button>
+<!-- Question 8: Marked -->
+<button class="aspect-square flex items-center justify-center rounded-xl bg-tertiary-container text-on-tertiary font-bold text-sm hover:opacity-80 transition-all active:scale-90">8</button>
+<!-- Question 9-13: Unanswered -->
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all active:scale-90">9</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all active:scale-90">10</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all active:scale-90">11</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all active:scale-90">12</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm hover:bg-surface-container-highest transition-all active:scale-90">13</button>
+<!-- Question 14: Active Highlight -->
+<button class="aspect-square flex items-center justify-center rounded-xl ring-2 ring-primary ring-offset-2 bg-surface-container-highest text-primary font-extrabold text-sm transition-all active:scale-90">14</button>
+<!-- 15-200 Pattern (Simulated loop) -->
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm">15</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm">16</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-primary-container text-on-primary font-bold text-sm">17</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-primary-container text-on-primary font-bold text-sm">18</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm">19</button>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm">20</button>
+<!-- Continuing the grid dots to show density -->
+<div class="flex items-center justify-center aspect-square text-on-surface-variant/40"><span class="material-symbols-outlined text-[10px]" data-icon="more_horiz">more_horiz</span></div>
+<div class="flex items-center justify-center aspect-square text-on-surface-variant/40"><span class="material-symbols-outlined text-[10px]" data-icon="more_horiz">more_horiz</span></div>
+<div class="flex items-center justify-center aspect-square text-on-surface-variant/40"><span class="material-symbols-outlined text-[10px]" data-icon="more_horiz">more_horiz</span></div>
+<button class="aspect-square flex items-center justify-center rounded-xl bg-surface-container text-on-surface-variant font-medium text-sm">200</button>
+</div>
+</section>
+<!-- Submit Exam Area -->
+<section class="mt-12 flex justify-center">
+<button class="w-full max-w-sm bg-primary text-on-primary font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:bg-on-primary-fixed-variant transition-all active:scale-[0.98]">
+                Submit Exam
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1.5 hover:opacity-80 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="quiz">quiz</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-tight">Questions</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#00A76F]/10 dark:bg-[#00A76F]/20 text-[#00A76F] rounded-xl px-4 py-1.5 hover:opacity-80 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-tight">Review</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1.5 hover:opacity-80 active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="info">info</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-tight">Instructions</span>
+</button>
+</nav>
+</body></html>

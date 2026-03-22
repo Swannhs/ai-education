@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Competitive Exam - Session A</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#5790ff",
+              "on-tertiary-container": "#3e2700",
+              "primary-fixed-dim": "#5adda0",
+              "on-primary-container": "#00321f",
+              "surface-variant": "#d4e5f5",
+              "on-secondary-fixed": "#001a43",
+              "surface-container": "#e0f0ff",
+              "on-primary": "#ffffff",
+              "primary": "#006c46",
+              "on-surface-variant": "#3d4a41",
+              "surface-container-high": "#d9eafa",
+              "tertiary-fixed-dim": "#ffb950",
+              "on-tertiary-fixed-variant": "#624000",
+              "surface-container-low": "#ebf5ff",
+              "secondary-fixed-dim": "#afc6ff",
+              "on-primary-fixed": "#002112",
+              "tertiary": "#825500",
+              "outline": "#6d7a71",
+              "on-background": "#0d1d29",
+              "error": "#ba1a1a",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#c78500",
+              "surface-tint": "#006c46",
+              "error-container": "#ffdad6",
+              "primary-container": "#00a76f",
+              "surface-dim": "#cbdcec",
+              "on-error": "#ffffff",
+              "inverse-primary": "#5adda0",
+              "primary-fixed": "#79fabb",
+              "on-secondary-container": "#002963",
+              "on-surface": "#0d1d29",
+              "on-secondary-fixed-variant": "#004398",
+              "background": "#f6f9ff",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#291800",
+              "secondary-fixed": "#d9e2ff",
+              "tertiary-fixed": "#ffddb3",
+              "surface-container-highest": "#d4e5f5",
+              "secondary": "#0459c5",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#e6f2ff",
+              "surface-bright": "#f6f9ff",
+              "inverse-surface": "#22323e",
+              "outline-variant": "#bccabf",
+              "on-primary-fixed-variant": "#005234",
+              "surface": "#f6f9ff"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Public Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f6f9ff;
+            color: #0d1d29;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary-container selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#f6f9ff] dark:bg-slate-900 border-none transition-all duration-200 ease-in-out">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#006c46] dark:text-emerald-400" data-icon="timer">timer</span>
+<h1 class="font-public-sans text-lg font-semibold tracking-tight text-[#0d1d29] dark:text-slate-100">Competitive Exam - Session A</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex flex-col items-end">
+<span class="text-[10px] font-label font-bold uppercase tracking-widest text-outline">Remaining Time</span>
+<span class="text-[#006c46] font-bold font-headline">01:45:22</span>
+</div>
+<div class="bg-surface-container px-4 py-1.5 rounded-full flex items-center gap-2">
+<span class="text-xs font-bold text-primary">14 / 200</span>
+<div class="w-16 h-1.5 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[7%]"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-5xl mx-auto min-h-screen">
+<!-- Progress Bar Secondary for Mobile -->
+<div class="md:hidden mb-6 bg-surface-container-low p-4 rounded-xl">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-label font-bold uppercase text-outline">Question Progress</span>
+<span class="text-xs font-bold text-on-surface">14 of 200</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[7%]"></div>
+</div>
+</div>
+<!-- Question Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Content -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Meta Info Chips -->
+<div class="flex flex-wrap gap-3">
+<div class="px-3 py-1 bg-surface-container-low rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="menu_book">menu_book</span>
+<span class="text-xs font-medium text-on-surface-variant">Subject: Constitutional Law</span>
+</div>
+<div class="px-3 py-1 bg-surface-container-low rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="bolt">bolt</span>
+<span class="text-xs font-medium text-on-surface-variant">Difficulty: Medium</span>
+</div>
+<div class="px-3 py-1 bg-primary-container/10 rounded-lg flex items-center gap-2 border border-primary/10">
+<span class="text-xs font-bold text-primary">+2.0 / -0.5</span>
+</div>
+</div>
+<!-- The Question Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm">
+<span class="inline-block text-xs font-label font-bold text-primary mb-4 tracking-widest uppercase">Question 14</span>
+<h2 class="text-xl md:text-2xl font-semibold leading-relaxed text-on-surface">
+                        Which of the following is considered the primary source and supreme law of the People's Republic of Bangladesh?
+                    </h2>
+</div>
+<!-- MCQ Options -->
+<div class="grid grid-cols-1 gap-4">
+<!-- Option A -->
+<div class="group cursor-pointer bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 hover:bg-surface-container-low transition-all duration-200 border border-transparent">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center font-bold text-on-surface-variant group-hover:bg-primary-container/20 group-hover:text-primary transition-colors">A</div>
+<span class="text-on-surface font-medium">The Proclamation of Independence</span>
+</div>
+<!-- Option B (SELECTED) -->
+<div class="cursor-pointer bg-surface-container-low p-5 rounded-xl flex items-center gap-4 border-2 border-primary ring-4 ring-primary/5 transition-all duration-200">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center font-bold text-white">B</div>
+<span class="text-on-surface font-bold">The Constitution of Bangladesh</span>
+<span class="ml-auto material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Option C -->
+<div class="group cursor-pointer bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 hover:bg-surface-container-low transition-all duration-200 border border-transparent">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center font-bold text-on-surface-variant group-hover:bg-primary-container/20 group-hover:text-primary transition-colors">C</div>
+<span class="text-on-surface font-medium">The Penal Code 1860</span>
+</div>
+<!-- Option D -->
+<div class="group cursor-pointer bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 hover:bg-surface-container-low transition-all duration-200 border border-transparent">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center font-bold text-on-surface-variant group-hover:bg-primary-container/20 group-hover:text-primary transition-colors">D</div>
+<span class="text-on-surface font-medium">The Code of Civil Procedure</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Question Grid/Utility (Bento style) -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm space-y-4">
+<h3 class="text-sm font-label font-bold uppercase tracking-widest text-outline">Jump to Question</h3>
+<div class="grid grid-cols-5 gap-2">
+<!-- Example grid items -->
+<button class="aspect-square rounded-lg bg-primary text-white text-xs font-bold">14</button>
+<button class="aspect-square rounded-lg bg-surface-container text-on-surface-variant text-xs font-bold hover:bg-surface-container-high">15</button>
+<button class="aspect-square rounded-lg bg-surface-container text-on-surface-variant text-xs font-bold hover:bg-surface-container-high">16</button>
+<button class="aspect-square rounded-lg bg-surface-container text-on-surface-variant text-xs font-bold hover:bg-surface-container-high border-2 border-primary-container/30">17</button>
+<button class="aspect-square rounded-lg bg-surface-container text-on-surface-variant text-xs font-bold hover:bg-surface-container-high">18</button>
+<button class="aspect-square rounded-lg bg-surface-container text-on-surface-variant text-xs font-bold hover:bg-surface-container-high">19</button>
+<button class="aspect-square rounded-lg bg-surface-container text-on-surface-variant text-xs font-bold hover:bg-surface-container-high">20</button>
+</div>
+<div class="pt-4 border-t border-surface-container-high flex justify-between items-center text-[10px] font-label font-bold uppercase tracking-wider">
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-outline">Active</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 rounded-full bg-surface-container-high"></div>
+<span class="text-outline">Unvisited</span>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-primary to-primary-container p-6 rounded-2xl text-white shadow-lg">
+<div class="flex items-start justify-between mb-4">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+<span class="text-[10px] font-label font-bold bg-white/20 px-2 py-0.5 rounded uppercase">Exam Tip</span>
+</div>
+<p class="text-sm font-medium leading-relaxed opacity-90">
+                        Negative marking applies to this session. Skip questions if you are uncertain to protect your score.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-t border-slate-200/15 dark:border-slate-800/15 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-2xl">
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="arrow_back">arrow_back</span>
+<span class="font-inter text-[10px] uppercase tracking-wider font-bold">Previous</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="bookmark">bookmark</span>
+<span class="font-inter text-[10px] uppercase tracking-wider font-bold">Mark</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="arrow_forward">arrow_forward</span>
+<span class="font-inter text-[10px] uppercase tracking-wider font-bold">Next</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#006c46] text-white rounded-xl px-6 py-2 active:scale-95 transition-transform shadow-md">
+<span class="material-symbols-outlined mb-1" data-icon="check_circle">check_circle</span>
+<span class="font-inter text-[10px] uppercase tracking-wider font-bold">Submit</span>
+</button>
+</nav>
+</body></html>

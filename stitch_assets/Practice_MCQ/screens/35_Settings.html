@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Job Prep BD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#22323e",
+                        "surface": "#f6f9ff",
+                        "surface-variant": "#d4e5f5",
+                        "secondary-fixed": "#d9e2ff",
+                        "inverse-primary": "#5adda0",
+                        "primary-fixed-dim": "#5adda0",
+                        "on-primary-fixed-variant": "#005234",
+                        "tertiary-container": "#c78500",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#e6f2ff",
+                        "secondary-container": "#5790ff",
+                        "secondary": "#0459c5",
+                        "primary-fixed": "#79fabb",
+                        "outline-variant": "#bccabf",
+                        "tertiary-fixed-dim": "#ffb950",
+                        "surface-bright": "#f6f9ff",
+                        "primary": "#006c46",
+                        "on-primary-container": "#00321f",
+                        "on-secondary-fixed": "#001a43",
+                        "surface-container-low": "#ebf5ff",
+                        "on-primary": "#ffffff",
+                        "background": "#f6f9ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffddb3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#291800",
+                        "on-secondary-container": "#002963",
+                        "on-primary-fixed": "#002112",
+                        "surface-tint": "#006c46",
+                        "primary-container": "#00a76f",
+                        "on-surface": "#0d1d29",
+                        "tertiary": "#825500",
+                        "surface-container-high": "#d9eafa",
+                        "on-background": "#0d1d29",
+                        "surface-container": "#e0f0ff",
+                        "secondary-fixed-dim": "#afc6ff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#624000",
+                        "surface-container-highest": "#d4e5f5",
+                        "on-tertiary-container": "#3e2700",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#3d4a41",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#cbdcec",
+                        "on-secondary-fixed-variant": "#004398",
+                        "outline": "#6d7a71",
+                        "error-container": "#ffdad6"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Public Sans"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background-color: #f6f9ff;
+        }
+        .toggle-active {
+            background-color: #00A76F;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-[#f6f9ff] dark:bg-slate-900 flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-500" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Public_Sans'] text-xl font-semibold tracking-tight text-on-surface">Settings</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[#00A76F] font-bold text-lg">PrepBD</span>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-6 py-8">
+<!-- Profile Quick-View -->
+<section class="bg-surface-container-lowest rounded-xl p-6 mb-10 flex items-center gap-5 transition-all">
+<div class="relative">
+<img alt="User Profile" class="w-20 h-20 rounded-full object-cover ring-4 ring-primary-container/10" data-alt="Professional headshot of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWcD-USLylxxOw8SfL-jZDNQ40e79YBTYD4y7wxBNBzy5GohwG4Ip05Egjlx0KEPrsl45KW82rAO7B-VD_cXonR_1n5_XpQpRO4tMorTGWSrDL_Mzw1CeZK3aGHCyt7s94PFP7N5yE0Fk0JgHg7uJHT8cIOWdWC03bfE0n_kqQ02tz5z_BVtyIOgSY730PbF4nda7p6rYSjWqTIojn_YXff9FPfTwXd5jX7FZB9aaOVubh8i_xXXHRYNqESF7Ct0bnln8_2RL2NGk"/>
+<div class="absolute bottom-0 right-0 bg-primary-container p-1 rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-white text-xs block" data-icon="edit" style="font-size: 14px;">edit</span>
+</div>
+</div>
+<div>
+<h2 class="text-xl font-bold text-on-surface tracking-tight">Tanvir Ahmed</h2>
+<p class="text-on-surface-variant font-medium text-sm">tanvir.ahmed@example.bd</p>
+<div class="mt-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-container/10 text-primary-container">
+                    Pro Member
+                </div>
+</div>
+</section>
+<!-- Application Section -->
+<div class="mb-10">
+<h3 class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 px-2 mb-4">Application</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden">
+<!-- Theme Row -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</div>
+<span class="font-medium text-on-surface">Dark mode</span>
+</div>
+<button class="w-12 h-6 bg-slate-200 rounded-full relative p-1 transition-colors duration-200">
+<div class="w-4 h-4 bg-white rounded-full transition-transform transform translate-x-0"></div>
+</button>
+</div>
+<!-- Language Row -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-low transition-colors group cursor-pointer border-t border-surface-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<span class="font-medium text-on-surface">Language</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm text-on-surface-variant">English (US)</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Notifications Toggles -->
+<div class="px-6 py-4 border-t border-surface-variant/20">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+<span class="font-medium text-on-surface">Push notifications</span>
+</div>
+<button class="w-12 h-6 toggle-active rounded-full relative p-1 transition-colors duration-200">
+<div class="w-4 h-4 bg-white rounded-full transition-transform transform translate-x-6"></div>
+</button>
+</div>
+<div class="flex items-center justify-between ml-14">
+<span class="text-sm text-on-surface-variant">Email alerts</span>
+<button class="w-12 h-6 bg-slate-200 rounded-full relative p-1 transition-colors duration-200">
+<div class="w-4 h-4 bg-white rounded-full transition-transform transform translate-x-0"></div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Download & Storage -->
+<div class="mb-10">
+<h3 class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 px-2 mb-4">Storage</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden">
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="wifi">wifi</span>
+</div>
+<span class="font-medium text-on-surface">Download over Wi-Fi only</span>
+</div>
+<button class="w-12 h-6 toggle-active rounded-full relative p-1 transition-colors duration-200">
+<div class="w-4 h-4 bg-white rounded-full transition-transform transform translate-x-6"></div>
+</button>
+</div>
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-low transition-colors group cursor-pointer border-t border-surface-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="delete_sweep">delete_sweep</span>
+</div>
+<span class="font-medium text-on-surface">Clear cache</span>
+</div>
+<span class="text-xs font-mono text-on-surface-variant/60">42.5 MB</span>
+</div>
+</div>
+</div>
+<!-- Account Section -->
+<div class="mb-10">
+<h3 class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 px-2 mb-4">Account</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden">
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<span class="font-medium text-on-surface">Edit profile</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-low transition-colors group cursor-pointer border-t border-surface-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</div>
+<span class="font-medium text-on-surface">Change password</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-low transition-colors group cursor-pointer border-t border-surface-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</div>
+<span class="font-medium text-on-surface">Privacy policy</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center justify-between px-6 py-5 hover:bg-error-container/20 transition-colors group cursor-pointer border-t border-surface-variant/20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-error-container/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+<span class="font-bold text-error">Logout</span>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<p class="text-[10px] font-['Inter'] font-medium text-on-surface-variant/40 tracking-widest uppercase">Job Prep BD • Version 2.4.1 (Stable)</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-t border-slate-100/15 dark:border-slate-800/15 shadow-[0_-4px_20px_rgba(0,0,0,0,0.04)] flex justify-around items-center px-4 pb-6 pt-3">
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#00A76F] transition-all cursor-pointer active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#00A76F] transition-all cursor-pointer active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="book">book</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Study</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#00A76F] transition-all cursor-pointer active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Exams</span>
+</div>
+<!-- ACTIVE TAB -->
+<div class="flex flex-col items-center justify-center text-[#00A76F] font-bold relative after:content-[''] after:absolute after:-bottom-1 after:w-1 after:h-1 after:bg-[#00A76F] after:rounded-full cursor-pointer active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-wider mt-1">Settings</span>
+</div>
+</nav>
+</body></html>

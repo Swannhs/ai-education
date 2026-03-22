@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#ffddb3",
+              "outline": "#6d7a71",
+              "tertiary-container": "#c78500",
+              "primary-fixed-dim": "#5adda0",
+              "surface": "#f6f9ff",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#004398",
+              "surface-container-highest": "#d4e5f5",
+              "secondary-container": "#5790ff",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#d4e5f5",
+              "outline-variant": "#bccabf",
+              "secondary-fixed": "#d9e2ff",
+              "on-primary-container": "#00321f",
+              "surface-container-low": "#ebf5ff",
+              "on-surface-variant": "#3d4a41",
+              "secondary-fixed-dim": "#afc6ff",
+              "inverse-primary": "#5adda0",
+              "inverse-surface": "#22323e",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#005234",
+              "primary-fixed": "#79fabb",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#f6f9ff",
+              "secondary": "#0459c5",
+              "primary": "#006c46",
+              "surface-tint": "#006c46",
+              "on-tertiary-container": "#3e2700",
+              "on-primary-fixed": "#002112",
+              "on-surface": "#0d1d29",
+              "inverse-on-surface": "#e6f2ff",
+              "primary-container": "#00a76f",
+              "on-error-container": "#93000a",
+              "surface-container": "#e0f0ff",
+              "tertiary-fixed-dim": "#ffb950",
+              "surface-container-high": "#d9eafa",
+              "on-background": "#0d1d29",
+              "on-secondary-fixed": "#001a43",
+              "background": "#f6f9ff",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#624000",
+              "surface-dim": "#cbdcec",
+              "tertiary": "#825500",
+              "on-tertiary-fixed": "#291800",
+              "on-secondary-container": "#002963"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Public Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform duration-200 text-slate-500">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline text-lg font-semibold tracking-tight text-on-surface">Past Papers</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform duration-200 text-slate-500">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-[1px] w-full"></div>
+</header>
+<main class="pt-20 pb-24 px-6 max-w-2xl mx-auto">
+<!-- Filter Row -->
+<section class="mb-8">
+<div class="flex overflow-x-auto gap-3 hide-scrollbar py-2 -mx-6 px-6">
+<!-- Group: Exam Type -->
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label text-sm whitespace-nowrap">BCS</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm whitespace-nowrap">Bank</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm whitespace-nowrap">Primary</button>
+</div>
+<div class="w-px bg-outline-variant/30 self-stretch my-1"></div>
+<!-- Group: Year -->
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm whitespace-nowrap">2023</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm whitespace-nowrap">2022</button>
+</div>
+<div class="w-px bg-outline-variant/30 self-stretch my-1"></div>
+<!-- Group: Subject -->
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm whitespace-nowrap">Bangla</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant font-label text-sm whitespace-nowrap">English</button>
+</div>
+</div>
+</section>
+<!-- Featured Section: AI Insight (Bento/Card Style) -->
+<section class="mb-10">
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary-container/20 to-primary-container/5 p-6 border border-primary-container/20">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="font-headline font-bold text-primary tracking-tight">AI Insight</h2>
+</div>
+<span class="text-[10px] font-label font-bold uppercase tracking-widest bg-primary text-on-primary px-2 py-0.5 rounded">New</span>
+</div>
+<p class="font-body text-on-surface-variant leading-relaxed text-sm md:text-base">
+                    These topics appeared most often in the last 5 years: 
+                    <span class="font-semibold text-on-surface">Constitutional Law</span>, 
+                    <span class="font-semibold text-on-surface">Sentence Correction</span>, and 
+                    <span class="font-semibold text-on-surface">Medieval History</span>.
+                </p>
+<!-- Decorative element -->
+<div class="absolute -bottom-6 -right-6 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="insights">insights</span>
+</div>
+</div>
+</section>
+<!-- Question Sets List -->
+<section class="space-y-4">
+<h3 class="font-label text-[11px] font-semibold tracking-widest uppercase text-outline-variant mb-2">Available Papers</h3>
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline font-bold text-on-surface text-lg group-hover:text-primary transition-colors">45th BCS Preliminary (2023)</h4>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex items-center gap-1 text-on-surface-variant font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+                                200 Questions
+                            </div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+                                120 Minutes
+                            </div>
+</div>
+</div>
+<div class="h-10 w-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</div>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary-container font-label font-bold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all">
+                    Start Practice
+                </button>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline font-bold text-on-surface text-lg group-hover:text-primary transition-colors">44th BCS Preliminary (2022)</h4>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex items-center gap-1 text-on-surface-variant font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+                                200 Questions
+                            </div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+                                120 Minutes
+                            </div>
+</div>
+</div>
+<div class="h-10 w-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</div>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary-container font-label font-bold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all">
+                    Start Practice
+                </button>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline font-bold text-on-surface text-lg group-hover:text-primary transition-colors">43rd BCS Preliminary (2021)</h4>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex items-center gap-1 text-on-surface-variant font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+                                200 Questions
+                            </div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+                                120 Minutes
+                            </div>
+</div>
+</div>
+<div class="h-10 w-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</div>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary-container font-label font-bold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all">
+                    Start Practice
+                </button>
+</div>
+<!-- Card 4 (Bank Example) -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline font-bold text-on-surface text-lg group-hover:text-primary transition-colors">Combined 5 Bank Officer (2023)</h4>
+<div class="flex items-center gap-3 mt-1">
+<div class="flex items-center gap-1 text-on-surface-variant font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+                                100 Questions
+                            </div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+                                60 Minutes
+                            </div>
+</div>
+</div>
+<div class="h-10 w-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</div>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary-container font-label font-bold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all">
+                    Start Practice
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white dark:bg-slate-950 shadow-[0_-4px_12px_rgba(0,0,0,0.03)] border-t border-slate-100 dark:border-slate-800">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-[#00A76F] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label text-[11px] font-medium tracking-wide uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-[#00A76F] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label text-[11px] font-medium tracking-wide uppercase mt-1">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#00A76F] bg-[#00A76F]/10 rounded-xl px-4 py-2 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<span class="font-label text-[11px] font-medium tracking-wide uppercase mt-1">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-[#00A76F] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label text-[11px] font-medium tracking-wide uppercase mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

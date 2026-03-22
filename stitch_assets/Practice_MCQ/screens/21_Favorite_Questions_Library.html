@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Favorites Library - Govt Job Prep</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Public Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .label-font {
+            font-family: 'Inter', sans-serif;
+        }
+        /* No-Line Rule: Using background shifts instead of borders */
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline": "#6d7a71",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#3d4a41",
+                        "tertiary-fixed-dim": "#ffb950",
+                        "on-surface": "#0d1d29",
+                        "surface-container-highest": "#d4e5f5",
+                        "primary": "#006c46",
+                        "on-primary-fixed": "#002112",
+                        "surface-container": "#e0f0ff",
+                        "inverse-on-surface": "#e6f2ff",
+                        "on-secondary-fixed-variant": "#004398",
+                        "background": "#f6f9ff",
+                        "tertiary-fixed": "#ffddb3",
+                        "secondary-fixed-dim": "#afc6ff",
+                        "on-error-container": "#93000a",
+                        "on-background": "#0d1d29",
+                        "secondary-container": "#5790ff",
+                        "surface-variant": "#d4e5f5",
+                        "on-tertiary-container": "#3e2700",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#624000",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f6f9ff",
+                        "primary-container": "#00a76f",
+                        "primary-fixed-dim": "#5adda0",
+                        "primary-fixed": "#79fabb",
+                        "surface-tint": "#006c46",
+                        "outline-variant": "#bccabf",
+                        "surface-dim": "#cbdcec",
+                        "secondary": "#0459c5",
+                        "on-primary-container": "#00321f",
+                        "inverse-surface": "#22323e",
+                        "secondary-fixed": "#d9e2ff",
+                        "surface-container-low": "#ebf5ff",
+                        "tertiary-container": "#c78500",
+                        "surface": "#f6f9ff",
+                        "on-secondary-fixed": "#001a43",
+                        "tertiary": "#825500",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#002963",
+                        "inverse-primary": "#5adda0",
+                        "on-tertiary-fixed": "#291800",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#d9eafa",
+                        "on-primary-fixed-variant": "#005234"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Public Sans"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-none transition-colors duration-200 shadow-none">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-['Public_Sans'] font-semibold text-lg tracking-tight text-on-surface">Favorites Library</h1>
+</div>
+<button class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<main class="px-6 pt-6 space-y-8">
+<!-- Summary/Action Card -->
+<section class="space-y-4">
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-[0_8px_32px_-4px_rgba(0,0,0,0.04)]">
+<div class="flex items-center justify-between mb-6">
+<div>
+<p class="label-font text-sm text-on-surface-variant font-medium">Total Saved</p>
+<h2 class="text-3xl font-extrabold tracking-tight mt-1">128 <span class="text-lg font-semibold text-on-surface-variant/60">Questions</span></h2>
+</div>
+<div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">book_5</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-3">
+<button class="flex-1 bg-primary-container text-on-primary py-3.5 px-6 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+                        Practice All
+                    </button>
+<button class="flex-1 bg-secondary-container text-on-secondary-container py-3.5 px-6 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                        Smart Selection
+                    </button>
+</div>
+</div>
+<!-- AI Insight Chip -->
+<div class="bg-surface-container-low flex items-center gap-3 py-3 px-4 rounded-xl border border-primary-container/5">
+<span class="material-symbols-outlined text-primary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_graph</span>
+<p class="text-[13px] label-font text-on-surface-variant leading-tight">
+                    AI grouped your favorites into <span class="font-bold text-on-surface">English (45)</span>, <span class="font-bold text-on-surface">Math (32)</span>, and <span class="font-bold text-on-surface">GK (51)</span>
+</p>
+</div>
+</section>
+<!-- Filter Row -->
+<section class="-mx-6">
+<div class="flex items-center gap-3 overflow-x-auto px-6 no-scrollbar pb-2">
+<button class="whitespace-nowrap bg-on-surface text-surface py-2 px-5 rounded-xl text-[13px] font-semibold label-font transition-all">All Subjects</button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant py-2 px-5 rounded-xl text-[13px] font-semibold label-font hover:bg-surface-container-highest transition-all">English</button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant py-2 px-5 rounded-xl text-[13px] font-semibold label-font hover:bg-surface-container-highest transition-all">Bangla</button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant py-2 px-5 rounded-xl text-[13px] font-semibold label-font hover:bg-surface-container-highest transition-all">Mathematics</button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant py-2 px-5 rounded-xl text-[13px] font-semibold label-font hover:bg-surface-container-highest transition-all">General Knowledge</button>
+<button class="whitespace-nowrap bg-surface-container-high text-on-surface-variant py-2 px-5 rounded-xl text-[13px] font-semibold label-font hover:bg-surface-container-highest transition-all">Mental Ability</button>
+</div>
+</section>
+<!-- Question List -->
+<section class="space-y-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-surface-container text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[11px] font-bold label-font tracking-wide">ENGLISH - SYNONYMS</span>
+<span class="text-on-surface-variant/40 material-symbols-outlined">more_vert</span>
+</div>
+<p class="text-on-surface font-semibold leading-relaxed mb-4 line-clamp-2">What is the synonym of the word 'Pinnacle'? This question was frequently asked in BCS exams...</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-[12px] label-font">Saved 2 days ago</span>
+</div>
+<button class="text-primary-container font-bold text-sm flex items-center gap-1 group-hover:underline">
+                        Practice
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-surface-container text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[11px] font-bold label-font tracking-wide">MATH - PERCENTAGE</span>
+<span class="text-on-surface-variant/40 material-symbols-outlined">more_vert</span>
+</div>
+<p class="text-on-surface font-semibold leading-relaxed mb-4 line-clamp-2">If the price of sugar increases by 25%, by what percentage should a family reduce consumption?</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-[12px] label-font">Saved 5 days ago</span>
+</div>
+<button class="text-primary-container font-bold text-sm flex items-center gap-1 group-hover:underline">
+                        Practice
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-surface-container text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[11px] font-bold label-font tracking-wide">GENERAL KNOWLEDGE</span>
+<span class="text-on-surface-variant/40 material-symbols-outlined">more_vert</span>
+</div>
+<p class="text-on-surface font-semibold leading-relaxed mb-4 line-clamp-2">Who was the first President of Bangladesh? (Historical context and official timeline included)</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-[12px] label-font">Saved 1 week ago</span>
+</div>
+<button class="text-primary-container font-bold text-sm flex items-center gap-1 group-hover:underline">
+                        Practice
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md bg-gradient-to-b from-transparent to-slate-50/50 dark:to-slate-950/50 shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)]">
+<div class="flex justify-around items-center px-4 pb-6 pt-3 w-full">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 opacity-70 hover:opacity-100 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#00A76F] dark:text-[#00A76F] font-bold scale-110 transition-transform tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">book_5</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 opacity-70 hover:opacity-100 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 opacity-70 hover:opacity-100 tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-container/5 rounded-full blur-3xl"></div>
+<div class="absolute top-1/2 -left-24 w-64 h-64 bg-secondary-container/5 rounded-full blur-3xl"></div>
+</div>
+</body></html>

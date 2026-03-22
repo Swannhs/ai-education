@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wrong Answers Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Public+Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for horizontal chips */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#5790ff",
+              "primary-fixed-dim": "#5adda0",
+              "on-tertiary-fixed-variant": "#624000",
+              "on-secondary-fixed-variant": "#004398",
+              "surface-container-low": "#ebf5ff",
+              "secondary-fixed": "#d9e2ff",
+              "outline-variant": "#bccabf",
+              "outline": "#6d7a71",
+              "tertiary-fixed": "#ffddb3",
+              "surface": "#f6f9ff",
+              "primary-fixed": "#79fabb",
+              "surface-bright": "#f6f9ff",
+              "inverse-on-surface": "#e6f2ff",
+              "on-background": "#0d1d29",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#3e2700",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "surface-dim": "#cbdcec",
+              "surface-container-high": "#d9eafa",
+              "on-primary-fixed-variant": "#005234",
+              "primary": "#006c46",
+              "on-primary-container": "#00321f",
+              "secondary": "#0459c5",
+              "error-container": "#ffdad6",
+              "inverse-surface": "#22323e",
+              "on-primary-fixed": "#002112",
+              "on-error-container": "#93000a",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb950",
+              "on-secondary-container": "#002963",
+              "secondary-fixed-dim": "#afc6ff",
+              "surface-tint": "#006c46",
+              "surface-variant": "#d4e5f5",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#291800",
+              "primary-container": "#00a76f",
+              "inverse-primary": "#5adda0",
+              "surface-container-highest": "#d4e5f5",
+              "tertiary": "#825500",
+              "background": "#f6f9ff",
+              "on-surface-variant": "#3d4a41",
+              "tertiary-container": "#c78500",
+              "surface-container": "#e0f0ff",
+              "on-secondary-fixed": "#001a43",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#0d1d29"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Public Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="flex items-center w-full px-6 h-16 sticky top-0 z-50 bg-[#f6f9ff] dark:bg-slate-900">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#006c46] dark:text-[#00a76f]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Public_Sans'] font-bold text-xl tracking-tight text-[#006c46] dark:text-[#00a76f]">Wrong Answers</h1>
+</div>
+</header>
+<main class="px-6 space-y-8 max-w-2xl mx-auto mt-4">
+<!-- Summary Card & AI Insight Group -->
+<section class="space-y-4">
+<!-- Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_-4px_20px_0_rgba(0,0,0,0.02)]">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label text-xs uppercase tracking-wider text-on-surface-variant font-semibold mb-1">Total Backlog</p>
+<h2 class="text-3xl font-bold text-on-surface">128 Questions <span class="text-primary text-lg font-medium">to Review</span></h2>
+</div>
+<div class="bg-primary/10 p-3 rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="assignment_late">assignment_late</span>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-4 rounded-lg mb-6">
+<span class="material-symbols-outlined text-secondary" data-icon="trending_down">trending_down</span>
+<div>
+<p class="font-label text-[10px] uppercase font-bold text-secondary tracking-tight">Top Weakness</p>
+<p class="text-on-surface font-semibold text-sm">English Grammar (Narration)</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-3">
+<button class="flex-1 bg-primary text-on-primary font-bold py-3.5 rounded-xl hover:opacity-90 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        Practice All
+                    </button>
+<button class="flex-1 border-2 border-outline-variant text-on-surface-variant font-bold py-3.5 rounded-xl hover:bg-surface-container transition-all active:scale-[0.98]">
+                        Clear Mastered
+                    </button>
+</div>
+</div>
+<!-- AI Insight -->
+<div class="bg-secondary-container/10 border-l-4 border-secondary p-4 rounded-r-xl flex gap-4 items-start">
+<span class="material-symbols-outlined text-secondary mt-0.5" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+<span class="font-bold text-on-surface">AI Insight:</span> You've missed 4 questions on <span class="font-bold text-primary">'Prepositions'</span> recently. Focus on this topic to boost your score by ~3.5%.
+                </p>
+</div>
+</section>
+<!-- Filter Row -->
+<section class="-mx-6 px-6">
+<div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-primary text-on-primary font-label text-xs font-bold transition-all shadow-md">All Subjects</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label text-xs font-bold hover:bg-surface-variant transition-all">Bangla</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label text-xs font-bold hover:bg-surface-variant transition-all">English</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label text-xs font-bold hover:bg-surface-variant transition-all">Math</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label text-xs font-bold hover:bg-surface-variant transition-all flex items-center gap-2">
+                    Difficulty: Hard
+                    <span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label text-xs font-bold hover:bg-surface-variant transition-all flex items-center gap-2">
+                    Last 7 Days
+                    <span class="material-symbols-outlined text-xs" data-icon="calendar_today">calendar_today</span>
+</button>
+</div>
+</section>
+<!-- List of Question Cards -->
+<section class="space-y-4">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest rounded-xl p-5 hover:shadow-lg transition-all border-l-4 border-transparent hover:border-primary">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-high text-on-surface-variant font-label text-[10px] font-bold uppercase">English</span>
+<span class="px-2.5 py-1 rounded-md bg-error-container text-on-error-container font-label text-[10px] font-bold uppercase">Hard</span>
+</div>
+<span class="text-[11px] text-outline font-label font-medium">May 24, 2024</span>
+</div>
+<h3 class="text-on-surface font-semibold leading-snug mb-4 line-clamp-2">
+                    Which one is the correct indirect speech of: He said, "I have been working since morning"?
+                </h3>
+<div class="flex items-center justify-between pt-4 border-t border-surface-variant/50">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span>
+<span class="text-[11px] font-medium">Attempted 3 times</span>
+</div>
+<button class="flex items-center gap-1.5 text-primary font-bold text-sm px-4 py-2 rounded-lg hover:bg-primary/5 transition-colors">
+                        Re-try
+                        <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest rounded-xl p-5 hover:shadow-lg transition-all border-l-4 border-transparent hover:border-primary">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-high text-on-surface-variant font-label text-[10px] font-bold uppercase">Math</span>
+<span class="px-2.5 py-1 rounded-md bg-surface-container text-on-surface-variant font-label text-[10px] font-bold uppercase">Medium</span>
+</div>
+<span class="text-[11px] text-outline font-label font-medium">Yesterday</span>
+</div>
+<h3 class="text-on-surface font-semibold leading-snug mb-4 line-clamp-2">
+                    If the area of a circle is 154 square cm, then its circumference is?
+                </h3>
+<div class="flex items-center justify-between pt-4 border-t border-surface-variant/50">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span>
+<span class="text-[11px] font-medium">Attempted 1 time</span>
+</div>
+<button class="flex items-center gap-1.5 text-primary font-bold text-sm px-4 py-2 rounded-lg hover:bg-primary/5 transition-colors">
+                        Re-try
+                        <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest rounded-xl p-5 hover:shadow-lg transition-all border-l-4 border-transparent hover:border-primary">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-high text-on-surface-variant font-label text-[10px] font-bold uppercase">Bangla</span>
+<span class="px-2.5 py-1 rounded-md bg-error-container text-on-error-container font-label text-[10px] font-bold uppercase">Hard</span>
+</div>
+<span class="text-[11px] text-outline font-label font-medium">May 21, 2024</span>
+</div>
+<h3 class="text-on-surface font-semibold leading-snug mb-4 line-clamp-2">
+                    ‘রবীন্দ্রনাথ ঠাকুর’ কত সালে নোবেল পুরস্কার লাভ করেন? (In which year did Rabindranath Tagore win Nobel?)
+                </h3>
+<div class="flex items-center justify-between pt-4 border-t border-surface-variant/50">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span>
+<span class="text-[11px] font-medium">Attempted 2 times</span>
+</div>
+<button class="flex items-center gap-1.5 text-primary font-bold text-sm px-4 py-2 rounded-lg hover:bg-primary/5 transition-colors">
+                        Re-try
+                        <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Empty state spacer -->
+<div class="h-12"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800/50 shadow-[0_-4px_20px_0_rgba(0,0,0,0.02)]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-[#006c46] dark:hover:text-[#00a76f] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-[#006c46] dark:hover:text-[#00a76f] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="quiz">quiz</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide uppercase">Tests</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#006c46]/10 dark:bg-[#00a76f]/10 text-[#006c46] dark:text-[#00a76f] rounded-xl px-4 py-1 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="assignment_late" style="font-variation-settings: 'FILL' 1;">assignment_late</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide uppercase">Review</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-[#006c46] dark:hover:text-[#00a76f] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide uppercase">Profile</span>
+</a>
+</nav>
+</body></html>

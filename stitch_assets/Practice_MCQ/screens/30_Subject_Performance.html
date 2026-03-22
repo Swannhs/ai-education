@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subject Performance | BCS Prep Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-container": "#3e2700",
+              "secondary-container": "#5790ff",
+              "on-background": "#0d1d29",
+              "on-surface-variant": "#3d4a41",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#22323e",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#0d1d29",
+              "surface-dim": "#cbdcec",
+              "surface-bright": "#f6f9ff",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#624000",
+              "secondary-fixed": "#d9e2ff",
+              "tertiary-fixed-dim": "#ffb950",
+              "tertiary-fixed": "#ffddb3",
+              "on-secondary-container": "#002963",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#5adda0",
+              "outline-variant": "#bccabf",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#e0f0ff",
+              "secondary": "#0459c5",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#afc6ff",
+              "on-primary": "#ffffff",
+              "primary": "#006c46",
+              "inverse-on-surface": "#e6f2ff",
+              "surface-tint": "#006c46",
+              "outline": "#6d7a71",
+              "tertiary": "#825500",
+              "surface-container-high": "#d9eafa",
+              "on-primary-fixed": "#002112",
+              "surface-variant": "#d4e5f5",
+              "primary-container": "#00a76f",
+              "on-secondary-fixed": "#001a43",
+              "inverse-primary": "#5adda0",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#79fabb",
+              "on-primary-container": "#00321f",
+              "on-secondary-fixed-variant": "#004398",
+              "surface": "#f6f9ff",
+              "on-tertiary-fixed": "#291800",
+              "tertiary-container": "#c78500",
+              "on-primary-fixed-variant": "#005234",
+              "surface-container-highest": "#d4e5f5",
+              "background": "#f6f9ff",
+              "surface-container-low": "#ebf5ff"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Public Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #f6f9ff;
+        color: #0d1d29;
+        font-family: 'Public Sans', sans-serif;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 duration-200 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500">arrow_back</span>
+</button>
+<h1 class="text-[#00A76F] font-['Public_Sans'] font-bold text-lg tracking-tight">Performance Analytics</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white overflow-hidden">
+<img alt="Student Profile" class="w-full h-full object-cover" data-alt="User profile avatar icon small circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKXRBTMjG1jTRw8cK_9ptw_QyHKhjcWm1EvDP9EU3dxUjv8FjJjhQM50KVxwspy_az1riuQ6X-gdoQbzrpHVmbPt2AT44pZxZSoQWpdsyP9SPC23n37y-Rm-JH8Bsf-tTkgnLhTkP3oEwRdcc8uMzvkZLhJI_7P4UuefEIIj6b4Q3TSKOs7ZKtUy6t14YzVmLs3i8xmE2eTj2SgWrrz9C6BceezLUqI1JnUuH3kECVxQ72cat6cLTLRrblJcd6bLQphh-Ju4-fFkM"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-5xl mx-auto space-y-8">
+<!-- Hero Section: Overall Accuracy -->
+<section class="space-y-4">
+<div class="flex items-baseline justify-between">
+<h2 class="font-headline font-extrabold text-2xl tracking-tight text-on-surface">Subject Accuracy</h2>
+<span class="font-label text-sm text-on-surface-variant">Last 30 Days</span>
+</div>
+<!-- Bento Grid Accuracy -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<!-- Bangla -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border border-outline-variant/15">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">history_edu</span>
+<span class="font-label text-xs font-bold text-primary px-2 py-0.5 bg-primary/5 rounded-full">+2.4%</span>
+</div>
+<div class="space-y-1">
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-wider">Bangla</p>
+<p class="font-headline font-bold text-2xl text-on-surface">84.2%</p>
+</div>
+</div>
+<!-- English -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border border-outline-variant/15">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary p-2 bg-secondary/10 rounded-lg">translate</span>
+<span class="font-label text-xs font-bold text-error px-2 py-0.5 bg-error/5 rounded-full">-1.2%</span>
+</div>
+<div class="space-y-1">
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-wider">English</p>
+<p class="font-headline font-bold text-2xl text-on-surface">76.5%</p>
+</div>
+</div>
+<!-- Mathematics -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border border-outline-variant/15">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary p-2 bg-tertiary/10 rounded-lg">calculate</span>
+<span class="font-label text-xs font-bold text-primary px-2 py-0.5 bg-primary/5 rounded-full">+5.1%</span>
+</div>
+<div class="space-y-1">
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-wider">Mathematics</p>
+<p class="font-headline font-bold text-2xl text-on-surface">92.0%</p>
+</div>
+</div>
+<!-- General Knowledge -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border border-outline-variant/15">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-on-surface-variant p-2 bg-surface-container rounded-lg">public</span>
+<span class="font-label text-xs font-bold text-on-surface-variant px-2 py-0.5 bg-surface-container rounded-full">Stable</span>
+</div>
+<div class="space-y-1">
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-wider">GK</p>
+<p class="font-headline font-bold text-2xl text-on-surface">68.8%</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Syllabus Coverage Section -->
+<section class="space-y-6">
+<h2 class="font-headline font-extrabold text-2xl tracking-tight text-on-surface">Syllabus Progress</h2>
+<div class="bg-surface-container-low p-8 rounded-2xl space-y-8">
+<!-- Subject 1 -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline font-bold text-on-surface">Mathematics</h3>
+<p class="font-label text-sm text-on-surface-variant">Arithmetic &amp; Geometry modules completed</p>
+</div>
+<span class="font-label font-bold text-primary">85%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Subject 2 -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline font-bold text-on-surface">English Literature</h3>
+<p class="font-label text-sm text-on-surface-variant">Modern Age period remaining</p>
+</div>
+<span class="font-label font-bold text-primary">62%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 62%"></div>
+</div>
+</div>
+<!-- Subject 3 -->
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline font-bold text-on-surface">Bangladesh Affairs</h3>
+<p class="font-label text-sm text-on-surface-variant">Economic survey 2024 pending</p>
+</div>
+<span class="font-label font-bold text-tertiary">44%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 44%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Performance List -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline font-extrabold text-2xl tracking-tight text-on-surface">Recent Tests: Mathematics</h2>
+<button class="text-primary font-label text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="space-y-2">
+<!-- List Item 1 -->
+<div class="group bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between hover:bg-surface-container-low transition-all border border-transparent hover:border-outline-variant/15">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">quiz</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Weekly Mock Test #12</h4>
+<p class="font-label text-xs text-on-surface-variant">Oct 14, 2023 • 50 Questions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-primary">48/50</p>
+<p class="font-label text-[10px] uppercase text-on-surface-variant tracking-widest font-bold">Accuracy: 96%</p>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="group bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between hover:bg-surface-container-low transition-all border border-transparent hover:border-outline-variant/15">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">edit_square</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Geometry Practice Set</h4>
+<p class="font-label text-xs text-on-surface-variant">Oct 12, 2023 • 25 Questions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-primary">22/25</p>
+<p class="font-label text-[10px] uppercase text-on-surface-variant tracking-widest font-bold">Accuracy: 88%</p>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="group bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between hover:bg-surface-container-low transition-all border border-transparent hover:border-outline-variant/15">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface">Mental Ability Drill</h4>
+<p class="font-label text-xs text-on-surface-variant">Oct 10, 2023 • 30 Questions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-primary">28/30</p>
+<p class="font-label text-[10px] uppercase text-on-surface-variant tracking-widest font-bold">Accuracy: 93%</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-slate-950/90 backdrop-blur-xl rounded-t-2xl shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)] border-t border-slate-100 dark:border-slate-800">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#00A76F] transition-all active:translate-y-0.5 duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#00A76F] bg-[#00A76F]/10 rounded-xl px-3 py-1 transition-all active:translate-y-0.5 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">book</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Subjects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#00A76F] transition-all active:translate-y-0.5 duration-150" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#00A76F] transition-all active:translate-y-0.5 duration-150" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Tests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#00A76F] transition-all active:translate-y-0.5 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Profile</span>
+</a>
+</nav>
+</body></html>

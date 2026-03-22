@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sarkari Assistant - AI Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "surface-bright": "#f6f9ff",
+              "primary-container": "#00a76f",
+              "primary-fixed-dim": "#5adda0",
+              "primary-fixed": "#79fabb",
+              "surface-variant": "#d4e5f5",
+              "on-tertiary-container": "#3e2700",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed-variant": "#624000",
+              "on-secondary-fixed-variant": "#004398",
+              "background": "#f6f9ff",
+              "tertiary-fixed": "#ffddb3",
+              "secondary-fixed-dim": "#afc6ff",
+              "on-error-container": "#93000a",
+              "on-background": "#0d1d29",
+              "secondary-container": "#5790ff",
+              "inverse-on-surface": "#e6f2ff",
+              "surface-container-highest": "#d4e5f5",
+              "primary": "#006c46",
+              "on-primary-fixed": "#002112",
+              "surface-container": "#e0f0ff",
+              "tertiary-fixed-dim": "#ffb950",
+              "on-surface": "#0d1d29",
+              "on-surface-variant": "#3d4a41",
+              "outline": "#6d7a71",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#291800",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#d9eafa",
+              "on-primary-fixed-variant": "#005234",
+              "inverse-primary": "#5adda0",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#002963",
+              "on-secondary-fixed": "#001a43",
+              "tertiary": "#825500",
+              "tertiary-container": "#c78500",
+              "surface": "#f6f9ff",
+              "surface-container-low": "#ebf5ff",
+              "secondary-fixed": "#d9e2ff",
+              "surface-tint": "#006c46",
+              "outline-variant": "#bccabf",
+              "surface-dim": "#cbdcec",
+              "secondary": "#0459c5",
+              "on-primary-container": "#00321f",
+              "inverse-surface": "#22323e"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Public Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f6f9ff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-surface antialiased">
+<!-- TopAppBar Section -->
+<header class="w-full top-0 sticky bg-[#f6f9ff] z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:bg-slate-100 transition-colors p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-xl font-bold text-[#006c46] font-headline tracking-tight">Sarkari Assistant</h1>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border-2 border-white overflow-hidden shadow-sm">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Portrait of a young male professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBROxDs2Fm6bQefzytFW1WXy6eF4wAwWjIMQDUDI9ubhule-ZV1DSwdqeYaWtpr5AwIj48m8vpXI8WKINmgVWrYCIHj4QObAc8vVgqNWB-mcXeFADLsuccupPlbcoMv4_BCCwwppO397sCY_4k8K_Z2JBk9IcGrKmjJ0o4Cy8LESTBEJDnad_sqNSfO0fq0HcBm77nnfOX7llbIVHDAIa_ZkD3puBodsUvlHsKcMmRKTg25P7ifsepnFVkBNGxZaeLWsQXkqUL2zGo"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-6 pb-32">
+<!-- AI Welcome Section -->
+<section class="mt-8 mb-12 text-center">
+<div class="inline-flex items-center justify-center p-3 mb-4 rounded-2xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface mb-2">How can I help your study today?</h2>
+<p class="text-on-surface-variant font-medium">Ask about BCS, Bank Jobs, or any Primary School syllabus.</p>
+</section>
+<!-- Suggested Prompts -->
+<section class="mb-12">
+<div class="flex flex-wrap gap-3 justify-center">
+<button class="px-5 py-2.5 rounded-xl bg-surface-container-lowest text-primary font-label text-sm font-semibold shadow-sm hover:shadow-md transition-all border border-outline-variant/10">
+                    Explain Math Ratio
+                </button>
+<button class="px-5 py-2.5 rounded-xl bg-surface-container-lowest text-primary font-label text-sm font-semibold shadow-sm hover:shadow-md transition-all border border-outline-variant/10">
+                    BCS English Syllabus
+                </button>
+<button class="px-5 py-2.5 rounded-xl bg-surface-container-lowest text-primary font-label text-sm font-semibold shadow-sm hover:shadow-md transition-all border border-outline-variant/10">
+                    Summarize Chapter 1
+                </button>
+<button class="px-5 py-2.5 rounded-xl bg-surface-container-lowest text-primary font-label text-sm font-semibold shadow-sm hover:shadow-md transition-all border border-outline-variant/10">
+                    General Knowledge Bangladesh
+                </button>
+</div>
+</section>
+<!-- Chat History -->
+<section class="space-y-8">
+<!-- User Message -->
+<div class="flex justify-end items-start gap-3">
+<div class="max-w-[80%] px-5 py-4 rounded-2xl rounded-tr-none bg-primary-container/10 text-primary font-medium">
+                    Can you explain the difference between direct and indirect taxes in Bangladesh economy?
+                </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden mt-1">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Small user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlCUGzy8gbyBHMVMAZoOJpZ1gQOneOWG2lPxL2KSrhIfIldvRyC3IEGJlnvtI6dP4kggHVdwuqJa_GYTNi73VRrNH4YJKtGMFqw8hIZBzGuJMeNaOqP4TQgSghSVO7LrnVtmjfnkuqYD3k0oHFAx9kpKXFo61sosCB5SqmmcNtDnILCgpsqXCbdYEGGELFuBia8WeKnJn1i9RIjuJxoAyr4CI0azAp5JvYDVenRaQaNXLEn_qRYV59Ijh7946O4SaVgxsGGCU3LrQ"/>
+</div>
+</div>
+<!-- AI Response -->
+<div class="flex justify-start items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
+<span class="material-symbols-outlined text-lg" data-icon="auto_stories">auto_stories</span>
+</div>
+<div class="max-w-[85%] px-6 py-5 rounded-2xl rounded-tl-none bg-surface-container-lowest shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] border border-outline-variant/5">
+<p class="text-on-surface leading-relaxed mb-4">Certainly! In the context of the Bangladesh economy and BCS preparation, here is the breakdown:</p>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="text-primary font-bold">1.</span>
+<p class="text-on-surface-variant"><strong class="text-on-surface">Direct Tax:</strong> These are paid directly by the individual to the government (e.g., Income Tax, Corporate Tax). You cannot shift the burden to someone else.</p>
+</li>
+<li class="flex gap-3">
+<span class="text-primary font-bold">2.</span>
+<p class="text-on-surface-variant"><strong class="text-on-surface">Indirect Tax:</strong> These are collected by an intermediary (like a shopkeeper) from the person who bears the ultimate economic burden (e.g., VAT, Customs Duty). The burden can be shifted to the consumer.</p>
+</li>
+</ul>
+<div class="mt-6 pt-4 border-t border-outline-variant/10 flex gap-4">
+<button class="flex items-center gap-1.5 text-xs font-label font-bold text-primary uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span> Copy
+                        </button>
+<button class="flex items-center gap-1.5 text-xs font-label font-bold text-slate-400 uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span>
+</button>
+</div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex justify-end items-start gap-3">
+<div class="max-w-[80%] px-5 py-4 rounded-2xl rounded-tr-none bg-primary-container/10 text-primary font-medium">
+                    What is the current VAT rate in Bangladesh?
+                </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden mt-1">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Small user avatar thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa7dauEReDr2cgTD2-LYmwSOLzam7tirbMbTnbWy3RiN5J3LsEK9bGD1FawOmzJKukpg7W6-6YK15ZSksnmW1WXmukwwULgMiVST15ei2Ft4U2tL_FUAT7O3i15lw-zBgaLOJ9kNYsHYJKj2L1Onpmc-VxQVDDGRHMPadKTHnm3DGGXYxt3mbkjxHiUYbI0DshE-hvpmeSUDCShngz1clB8SrsGqalDQMXXR9lwKtznIGB2IetHxyivHf-08WiVaxdMjFP-HzFPu8"/>
+</div>
+</div>
+<!-- AI Response (Typing State/Small) -->
+<div class="flex justify-start items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
+<span class="material-symbols-outlined text-lg" data-icon="auto_stories">auto_stories</span>
+</div>
+<div class="max-w-[85%] px-6 py-5 rounded-2xl rounded-tl-none bg-surface-container-lowest shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] border border-outline-variant/5">
+<p class="text-on-surface leading-relaxed">The standard VAT rate in Bangladesh is <span class="font-bold text-primary">15%</span>, though there are reduced rates for certain essential goods and services (e.g., 5%, 7.5%, 10%). For your exam, remember the <span class="italic">VAT Act 2012</span> is the primary regulation.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Input Area -->
+<div class="fixed bottom-0 left-0 w-full px-4 pb-8 pt-4 bg-gradient-to-t from-background via-background to-transparent z-40">
+<div class="max-w-3xl mx-auto">
+<div class="relative flex items-center bg-surface-container-lowest rounded-2xl shadow-lg border border-outline-variant/20 p-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<button class="p-3 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+<input class="w-full py-3 bg-transparent border-none focus:ring-0 text-on-surface font-medium placeholder:text-slate-400" placeholder="Ask Sarkari Assistant..." type="text"/>
+<div class="flex items-center gap-1 pr-2">
+<button class="p-3 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="p-3 bg-primary text-white rounded-xl shadow-md active:scale-95 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+<p class="text-center text-[10px] font-label font-semibold uppercase tracking-widest text-slate-400 mt-4">Powered by Minimalist Pro Learning Engine</p>
+</div>
+</div>
+<!-- BottomNavBar Section -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 rounded-t-2xl shadow-[0_-4px_20px_0_rgba(0,0,0,0.03)] border-t border-slate-100 hidden md:hidden">
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#00A76F] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Study</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#00A76F]/10 text-[#006c46] rounded-xl px-4 py-1.5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Assistant</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#00A76F] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#00A76F] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

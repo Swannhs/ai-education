@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Voice Assistant - Job Prep AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#ffb950",
+              "surface-container-lowest": "#ffffff",
+              "on-background": "#0d1d29",
+              "surface-variant": "#d4e5f5",
+              "surface": "#f6f9ff",
+              "on-secondary-container": "#002963",
+              "outline-variant": "#bccabf",
+              "on-error-container": "#93000a",
+              "surface-dim": "#cbdcec",
+              "surface-container-low": "#ebf5ff",
+              "on-tertiary-fixed": "#291800",
+              "outline": "#6d7a71",
+              "secondary": "#0459c5",
+              "on-tertiary-container": "#3e2700",
+              "on-secondary-fixed-variant": "#004398",
+              "surface-tint": "#006c46",
+              "inverse-primary": "#5adda0",
+              "surface-container": "#e0f0ff",
+              "error-container": "#ffdad6",
+              "primary-container": "#00a76f",
+              "background": "#f6f9ff",
+              "primary": "#006c46",
+              "on-surface-variant": "#3d4a41",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#001a43",
+              "inverse-surface": "#22323e",
+              "tertiary": "#825500",
+              "error": "#ba1a1a",
+              "primary-fixed": "#79fabb",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#5adda0",
+              "surface-bright": "#f6f9ff",
+              "on-primary-container": "#00321f",
+              "tertiary-container": "#c78500",
+              "secondary-fixed-dim": "#afc6ff",
+              "on-primary-fixed": "#002112",
+              "secondary-container": "#5790ff",
+              "on-surface": "#0d1d29",
+              "secondary-fixed": "#d9e2ff",
+              "on-primary-fixed-variant": "#005234",
+              "surface-container-highest": "#d4e5f5",
+              "on-tertiary-fixed-variant": "#624000",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#ffddb3",
+              "surface-container-high": "#d9eafa",
+              "inverse-on-surface": "#e6f2ff"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Public Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-soft {
+            box-shadow: 0 0 0 0 rgba(0, 167, 111, 0.4);
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(0, 167, 111, 0.4); }
+            70% { box-shadow: 0 0 0 30px rgba(0, 167, 111, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 167, 111, 0); }
+        }
+        .waveform-bar {
+            animation: wave 1.2s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% { height: 12px; }
+            50% { height: 48px; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-30 bg-[#f6f9ff] dark:bg-slate-950 flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-['Public_Sans'] font-semibold text-lg tracking-tight text-on-surface">Voice Assistant</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">account_circle</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col items-center px-6 pt-12 pb-32 max-w-md mx-auto w-full">
+<!-- Status Indicator -->
+<div class="flex items-center gap-2 mb-12">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container pulse-soft"></div>
+<span class="font-label text-sm font-medium tracking-wide text-primary-container uppercase">Listening...</span>
+</div>
+<!-- Central Audio Visualizer -->
+<div class="relative w-64 h-64 flex items-center justify-center mb-16">
+<!-- Background Layering per Design System -->
+<div class="absolute inset-0 bg-surface-container-low rounded-full scale-100 opacity-50"></div>
+<div class="absolute inset-4 bg-surface-container-high rounded-full scale-100 opacity-70"></div>
+<!-- Voice Waveform Placeholder -->
+<div class="z-10 flex items-center justify-center gap-1.5 h-16">
+<div class="waveform-bar w-1.5 bg-primary-container rounded-full" style="animation-delay: 0.1s"></div>
+<div class="waveform-bar w-1.5 bg-primary-container rounded-full" style="animation-delay: 0.3s"></div>
+<div class="waveform-bar w-1.5 bg-primary-container rounded-full" style="animation-delay: 0.2s"></div>
+<div class="waveform-bar w-1.5 bg-primary-container rounded-full" style="animation-delay: 0.4s"></div>
+<div class="waveform-bar w-1.5 bg-primary-container rounded-full" style="animation-delay: 0.15s"></div>
+<div class="waveform-bar w-1.5 bg-primary-container rounded-full" style="animation-delay: 0.35s"></div>
+<div class="waveform-bar w-1.5 bg-primary-container rounded-full" style="animation-delay: 0.25s"></div>
+</div>
+<!-- Central Micro Button (Visual Only) -->
+<div class="absolute bottom-[-20px] bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(0,108,70,0.2)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+</div>
+<!-- Transcript Preview Card -->
+<div class="w-full bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 shadow-sm">
+<div class="flex items-start gap-3 mb-3">
+<span class="material-symbols-outlined text-primary-container text-sm">edit_note</span>
+<span class="font-label text-[11px] font-semibold text-on-surface-variant uppercase tracking-widest">Real-time Transcript</span>
+</div>
+<p class="text-on-surface leading-relaxed font-medium text-lg">
+                "What are the core subjects for the 45th BCS Preliminary exam?"
+                <span class="inline-block w-1.5 h-5 ml-1 bg-primary-container/30 animate-pulse"></span>
+</p>
+</div>
+<!-- Interaction Hints -->
+<div class="mt-10 text-center">
+<p class="text-on-surface-variant text-sm font-body">Speak clearly into your microphone for better accuracy.</p>
+</div>
+</main>
+<!-- Bottom Actions Container -->
+<div class="fixed bottom-24 left-0 w-full px-6 flex flex-col gap-3 max-w-md mx-auto right-0 z-40">
+<button class="w-full h-14 bg-primary-container text-on-primary-container font-semibold rounded-xl flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(0,167,111,0.15)] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">send</span>
+            Send Question
+        </button>
+<button class="w-full h-12 text-on-surface-variant font-medium text-sm flex items-center justify-center hover:bg-surface-container-low rounded-xl transition-colors">
+            Cancel
+        </button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md flex justify-around items-center px-4 pb-6 pt-3 border-t border-[#f6f9ff]/15 shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#00A76F] transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#00A76F] transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1">book_5</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#00A76F] bg-[#00A76F]/10 rounded-xl px-3 py-1 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Ask AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#00A76F] transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Profile</span>
+</a>
+</nav>
+</body></html>

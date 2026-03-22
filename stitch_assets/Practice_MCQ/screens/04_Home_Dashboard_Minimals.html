@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Govt Job Prep - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#22323e",
+              "surface": "#f6f9ff",
+              "surface-variant": "#d4e5f5",
+              "secondary-fixed": "#d9e2ff",
+              "inverse-primary": "#5adda0",
+              "primary-fixed-dim": "#5adda0",
+              "on-primary-fixed-variant": "#005234",
+              "tertiary-container": "#c78500",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#e6f2ff",
+              "secondary-container": "#5790ff",
+              "secondary": "#0459c5",
+              "primary-fixed": "#79fabb",
+              "outline-variant": "#bccabf",
+              "tertiary-fixed-dim": "#ffb950",
+              "surface-bright": "#f6f9ff",
+              "primary": "#006c46",
+              "on-primary-container": "#00321f",
+              "on-secondary-fixed": "#001a43",
+              "surface-container-low": "#ebf5ff",
+              "on-primary": "#ffffff",
+              "background": "#f6f9ff",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#ffddb3",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#291800",
+              "on-secondary-container": "#002963",
+              "on-primary-fixed": "#002112",
+              "surface-tint": "#006c46",
+              "primary-container": "#00a76f",
+              "on-surface": "#0d1d29",
+              "tertiary": "#825500",
+              "surface-container-high": "#d9eafa",
+              "on-background": "#0d1d29",
+              "surface-container": "#e0f0ff",
+              "secondary-fixed-dim": "#afc6ff",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed-variant": "#624000",
+              "surface-container-highest": "#d4e5f5",
+              "on-tertiary-container": "#3e2700",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#3d4a41",
+              "error": "#ba1a1a",
+              "surface-dim": "#cbdcec",
+              "on-secondary-fixed-variant": "#004398",
+              "outline": "#6d7a71",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Public Sans"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container/30">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-[#f6f9ff] flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="User professional portrait avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9KEDGykapXi0xO34_u-bHWQcCsTW2fwguEEjmu8Hbri8HRhwX5VKZ8v2vDPPYz144OSAlDQ55teAFvNSx8GTHJK1OMKFHFCPVUW71cgRBJGFwilge3xFPsSjj3E7h5Hs-8fAZLhMolpN-sSjEMAsTEOeIMHDFs4Mg_esqxgx-v-86DZeJ_C07ghcCUmJv-06WT6EqnAAH_a6cwZr0_Or4bVkrlk-uO9NKXsabhuPD5pI0r6D9ZBJKZ9gr5i69HroBtnyA0yefzzg"/>
+</div>
+<div>
+<p class="font-label text-xs text-on-surface-variant font-medium">Good morning,</p>
+<h1 class="font-headline text-xl font-bold tracking-tight text-on-surface">Sadek</h1>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="px-6 pb-32 pt-4 max-w-5xl mx-auto space-y-8">
+<!-- Continue Learning: Hero Bento Item -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-12 bg-surface-container-lowest p-6 rounded-2xl shadow-[0_4px_20px_0_rgba(0,0,0,0.02)] border border-outline-variant/10 flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden relative">
+<!-- Decorative Glow -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="space-y-4 relative z-10 md:max-w-md">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary-container/10 text-primary text-xs font-bold uppercase tracking-wider">Current Course</div>
+<h2 class="text-2xl font-extrabold text-on-surface tracking-tight">BCS Foundation Course</h2>
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-sm font-medium text-on-surface-variant">Course Progress</span>
+<span class="text-sm font-bold text-primary">65%</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-1000" style="width: 65%"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 relative z-10">
+<button class="w-full sm:w-auto px-8 py-4 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+                        Resume Learning
+                    </button>
+</div>
+</div>
+<!-- AI Suggestion: Asymmetric Sub-card -->
+<div class="md:col-span-12 bg-primary/5 border border-primary/10 p-5 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface text-sm">AI Recommendation</h4>
+<p class="text-on-surface-variant text-sm">Focus on <span class="font-bold text-primary">Medieval Bengal</span> today to boost your score by <span class="text-primary font-bold">15%</span>.</p>
+</div>
+</div>
+</section>
+<!-- Secondary Grid: Routine & Live Test -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Today's Routine -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-lg font-bold">Today's Routine</h3>
+<span class="text-xs font-label text-on-surface-variant bg-surface-container px-2 py-1 rounded">2 of 4 done</span>
+</div>
+<div class="space-y-4">
+<label class="flex items-center gap-4 p-4 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<div class="flex-1">
+<p class="text-sm font-semibold line-through text-on-surface-variant">Daily MCQ Challenge</p>
+<p class="text-[11px] text-on-surface-variant/60 font-label">General Knowledge • Completed</p>
+</div>
+<span class="material-symbols-outlined text-primary/40 text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">Bangla Literature - Ch 4</p>
+<p class="text-[11px] text-on-surface-variant font-label">Ancient &amp; Medieval Era</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="circle" style="font-variation-settings: 'FILL' 0;">circle</span>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"/>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">English Grammar: Tense</p>
+<p class="text-[11px] text-on-surface-variant font-label">Practice Set 12</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="circle" style="font-variation-settings: 'FILL' 0;">circle</span>
+</label>
+</div>
+</div>
+<!-- Live Test Card -->
+<div class="bg-inverse-surface p-6 rounded-2xl relative overflow-hidden group">
+<!-- Abstract Pattern background -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="Abstract dark digital geometric pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVS04Rz7dUY8n3xpmt8EVlNy104yQO60mXxzQzitSsVLsk-acCNPuHarneNhkrpJeWzDb_siU4cV7ApvX0wkdgRCVSmChSHl2eA_LMMz88gdyRby_7SrvkvWJ7PNSdyGqjfLdEJdGZ32-2knMLxp694llg_JiJ23cqSnZmCw7qGBuje9IU8jpOuaJC9ikj29Ov1WfciD53l8wSJ305AyfwG9055JGoDWlSzXeyAYwbRcSbggwAcjXcEAdnLNJcko-U_TA6eNU3-Ac"/>
+</div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-error/20 text-error-container text-[10px] font-bold uppercase tracking-widest mb-4">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                            Live Test
+                        </div>
+<h3 class="font-headline text-xl font-bold text-on-primary mb-2">Weekly BCS Mock Test #12</h3>
+<p class="text-surface-variant text-sm">Join 12,400+ aspirants in the official weekly simulation.</p>
+</div>
+<div class="mt-8 space-y-6">
+<div class="flex gap-4">
+<div class="flex-1 bg-white/5 backdrop-blur-md rounded-xl p-3 border border-white/10">
+<p class="text-[10px] text-surface-variant font-label uppercase">Starts In</p>
+<p class="text-xl font-mono font-bold text-on-primary">02:45:12</p>
+</div>
+</div>
+<button class="w-full py-3 border border-primary-container text-primary-container rounded-xl font-bold hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">
+                            Set Reminder
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Practice Card: AI-Powered -->
+<section class="bg-surface-container-low p-6 rounded-2xl border border-primary/5 flex flex-col md:flex-row items-center gap-6">
+<div class="w-16 h-16 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-3xl" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-headline text-lg font-bold text-on-surface">Master Weak Topics</h3>
+<p class="text-sm text-on-surface-variant">Our AI analyzed your last 3 tests. You're struggling with <span class="font-bold text-on-surface">Mental Ability</span>.</p>
+</div>
+<button class="px-6 py-3 bg-primary text-on-primary rounded-xl font-bold hover:bg-primary/90 transition-all flex items-center gap-2">
+                Start Practice
+                <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- Subjects Horizontal Scroll -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="font-headline text-lg font-bold">Explore Subjects</h3>
+<button class="text-primary text-xs font-bold hover:underline">View All</button>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+<!-- Subject: Bangla -->
+<div class="flex-none w-36 aspect-square bg-surface-container-lowest rounded-2xl border border-outline-variant/10 p-4 flex flex-col justify-between group hover:bg-primary/5 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-xl bg-[#e6f2ff] flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Bangla</p>
+<p class="text-[10px] text-on-surface-variant font-label">42 Lessons</p>
+</div>
+</div>
+<!-- Subject: English -->
+<div class="flex-none w-36 aspect-square bg-surface-container-lowest rounded-2xl border border-outline-variant/10 p-4 flex flex-col justify-between group hover:bg-primary/5 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-xl bg-[#fff4e6] flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">English</p>
+<p class="text-[10px] text-on-surface-variant font-label">38 Lessons</p>
+</div>
+</div>
+<!-- Subject: Math -->
+<div class="flex-none w-36 aspect-square bg-surface-container-lowest rounded-2xl border border-outline-variant/10 p-4 flex flex-col justify-between group hover:bg-primary/5 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-xl bg-[#f0fdf4] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Math</p>
+<p class="text-[10px] text-on-surface-variant font-label">56 Lessons</p>
+</div>
+</div>
+<!-- Subject: GK -->
+<div class="flex-none w-36 aspect-square bg-surface-container-lowest rounded-2xl border border-outline-variant/10 p-4 flex flex-col justify-between group hover:bg-primary/5 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-xl bg-[#f5f3ff] flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Gen. Knowledge</p>
+<p class="text-[10px] text-on-surface-variant font-label">120 Lessons</p>
+</div>
+</div>
+<!-- Subject: Science -->
+<div class="flex-none w-36 aspect-square bg-surface-container-lowest rounded-2xl border border-outline-variant/10 p-4 flex flex-col justify-between group hover:bg-primary/5 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-xl bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Gen. Science</p>
+<p class="text-[10px] text-on-surface-variant font-label">32 Lessons</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-white/80 backdrop-blur-xl z-50 rounded-t-2xl shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)] border-t border-[#006c46]/10">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-[#006c46] bg-[#006c46]/5 rounded-xl px-3 py-1 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Home</span>
+</a>
+<!-- Learn -->
+<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-[#006c46] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Learn</span>
+</a>
+<!-- Practice -->
+<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-[#006c46] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Practice</span>
+</a>
+<!-- Tests -->
+<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-[#006c46] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Tests</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-slate-400 px-3 py-1 hover:text-[#006c46] transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide">Profile</span>
+</a>
+</nav>
+</body></html>
