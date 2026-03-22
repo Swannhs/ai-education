@@ -10,6 +10,12 @@ import '../../features/auth/screens/forgot_password_screen.dart';
 
 import '../../features/practice/screens/subject_detail_screen.dart';
 
+import '../../features/tests/screens/test_list_screen.dart';
+
+import '../../features/profile/screens/profile_screen.dart';
+
+import '../../features/routine/screens/daily_routine_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
@@ -18,6 +24,9 @@ class AppRouter {
   static const String home = '/home';
   static const String practice = '/practice';
   static const String subjectDetail = '/subject-detail';
+  static const String testList = '/test-list';
+  static const String profile = '/profile';
+  static const String routine = '/routine';
 
   static Map<String, WidgetBuilder> get routes => {
     splash: (context) => const SplashScreen(),
@@ -27,6 +36,9 @@ class AppRouter {
     home: (context) => const HomeScreen(),
     practice: (context) => const PracticeScreen(),
     subjectDetail: (context) => const SubjectDetailScreen(),
+    testList: (context) => const TestListScreen(),
+    profile: (context) => const ProfileScreen(),
+    routine: (context) => const DailyRoutineScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -45,6 +57,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const PracticeScreen());
       case subjectDetail:
         return MaterialPageRoute(builder: (_) => const SubjectDetailScreen());
+      case testList:
+        return MaterialPageRoute(builder: (_) => const TestListScreen());
+      case profile:
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
+      case routine:
+        return MaterialPageRoute(builder: (_) => const DailyRoutineScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
