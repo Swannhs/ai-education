@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../shared/widgets/app_bottom_nav.dart';
 
 class SubjectDetailScreen extends StatelessWidget {
   const SubjectDetailScreen({super.key});
@@ -175,16 +176,6 @@ class SubjectDetailScreen extends StatelessWidget {
   }
 
   Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      currentIndex: 1,
-      selectedItemColor: AppColors.primary,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HOME'),
-        BottomNavigationBarItem(icon: Icon(Icons.book), label: 'SUBJECTS'),
-        BottomNavigationBarItem(icon: Icon(Icons.edit_document), label: 'PRACTICE'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'PROFILE'),
-      ],
-    );
+    return const AppBottomNav(currentIndex: 1);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../shared/widgets/app_bottom_nav.dart';
 
 class DailyRoutineScreen extends StatelessWidget {
   const DailyRoutineScreen({super.key});
@@ -239,17 +240,6 @@ class DailyRoutineScreen extends StatelessWidget {
   }
 
   Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      currentIndex: 2,
-      selectedItemColor: AppColors.primary,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Subjects'),
-        BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Routine'),
-        BottomNavigationBarItem(icon: Icon(Icons.timer), label: 'Tests'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-      ],
-    );
+    return const AppBottomNav(currentIndex: 2);
   }
 }

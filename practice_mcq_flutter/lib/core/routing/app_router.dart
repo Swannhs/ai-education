@@ -16,6 +16,8 @@ import '../../features/profile/screens/profile_screen.dart';
 
 import '../../features/routine/screens/daily_routine_screen.dart';
 
+import '../../features/practice/screens/learn_library_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
@@ -27,6 +29,7 @@ class AppRouter {
   static const String testList = '/test-list';
   static const String profile = '/profile';
   static const String routine = '/routine';
+  static const String learn = '/learn';
 
   static Map<String, WidgetBuilder> get routes => {
     splash: (context) => const SplashScreen(),
@@ -39,6 +42,7 @@ class AppRouter {
     testList: (context) => const TestListScreen(),
     profile: (context) => const ProfileScreen(),
     routine: (context) => const DailyRoutineScreen(),
+    learn: (context) => const LearnLibraryScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -63,6 +67,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case routine:
         return MaterialPageRoute(builder: (_) => const DailyRoutineScreen());
+      case learn:
+        return MaterialPageRoute(builder: (_) => const LearnLibraryScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

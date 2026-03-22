@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../shared/widgets/app_bottom_nav.dart';
+import '../../practice/screens/practice_screen.dart';
 import '../../../core/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -273,18 +275,6 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: AppColors.primary,
-      unselectedItemColor: AppColors.textSecondary,
-      currentIndex: 0,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: 'Learn'),
-        BottomNavigationBarItem(icon: Icon(Icons.edit_document), label: 'Practice'),
-        BottomNavigationBarItem(icon: Icon(Icons.timer), label: 'Tests'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-      ],
-    );
+    return const AppBottomNav(currentIndex: 0);
   }
 }
