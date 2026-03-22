@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
 import '../../../shared/widgets/app_drawer.dart';
+import '../../../core/routing/app_router.dart';
 
 class DailyRoutineScreen extends StatelessWidget {
   const DailyRoutineScreen({super.key});
@@ -49,11 +50,16 @@ class DailyRoutineScreen extends StatelessWidget {
             const SizedBox(height: 32),
             _buildSectionHeader('Today\'s Tasks', '3 / 5 Done'),
             const SizedBox(height: 16),
-            _buildTaskItem('Bengali Literature: Medieval Age', 'Lesson • 45 mins', true),
-            _buildTaskItem('General Science: Physics Basics', 'Lesson • 60 mins', true),
-            _buildTaskItem('Daily Mock Test: English Grammar', 'Quiz • 30 mins • Mandatory', false, hasStart: true),
-            _buildTaskItem('Mathematics: Geometry Part 1', 'Lesson • 90 mins', false),
-            _buildTaskItem('Current Affairs: International', 'Reading • 20 mins', false),
+            _buildTaskItem(context, 'Bengali Literature: Medieval Age', 'Lesson • 45 mins', true, 
+              onTap: () => Navigator.pushNamed(context, AppRouter.lessonContentViewer)),
+            _buildTaskItem(context, 'General Science: Physics Basics', 'Lesson • 60 mins', true,
+              onTap: () => Navigator.pushNamed(context, AppRouter.lessonContentViewer)),
+            _buildTaskItem(context, 'Daily Mock Test: English Grammar', 'Quiz • 30 mins • Mandatory', false, hasStart: true,
+              onTap: () => Navigator.pushNamed(context, AppRouter.testDetail)),
+            _buildTaskItem(context, 'Mathematics: Geometry Part 1', 'Lesson • 90 mins', false,
+              onTap: () => Navigator.pushNamed(context, AppRouter.lessonContentViewer)),
+            _buildTaskItem(context, 'Current Affairs: International', 'Reading • 20 mins', false,
+              onTap: () => Navigator.pushNamed(context, AppRouter.lessonContentViewer)),
             const SizedBox(height: 24),
             _buildAddCustomTaskButton(),
           ],
@@ -192,37 +198,48 @@ class DailyRoutineScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTaskItem(String title, String subtitle, bool isCompleted, {bool hasStart = false}) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border.withOpacity(0.5)),
-      ),
-      child: Row(
-        children: [
-          Icon(isCompleted ? Icons.check_circle : Icons.circle_outlined, color: isCompleted ? AppColors.primary : AppColors.textSecondary),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, decoration: isCompleted ? TextDecoration.lineThrough : null)),
-                Text(subtitle, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
-              ],
+  Widget _buildTaskItem(
+    BuildContext context, 
+    String title, 
+    String subtitle, 
+    bool isCompleted, {
+    bool hasStart = false,
+    VoidCallback? onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: AppColors.border.withOpacity(0.5)),
+        ),
+        child: Row(
+          children: [
+            Icon(isCompleted ? Icons.check_circle : Icons.circle_outlined, color: isCompleted ? AppColors.primary : AppColors.textSecondary),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, decoration: isCompleted ? TextDecoration.lineThrough : null)),
+                  Text(subtitle, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+                ],
+              ),
             ),
-          ),
-          if (hasStart)
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(color: const Color(0xFFE8F5E9), borderRadius: BorderRadius.circular(8)),
-              child: const Text('Start', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 12)),
-            )
-          else
-            const Icon(Icons.drag_indicator, color: AppColors.border),
-        ],
+            if (hasStart)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(color: const Color(0xFFE8F5E9), borderRadius: BorderRadius.circular(8)),
+                child: const Text('Start', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 12)),
+              )
+            else
+              const Icon(Icons.drag_indicator, color: AppColors.border),
+          ],
+        ),
       ),
     );
   }

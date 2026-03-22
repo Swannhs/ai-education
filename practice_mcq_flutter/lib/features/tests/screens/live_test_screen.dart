@@ -10,7 +10,10 @@ class LiveTestScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(Icons.close, color: Colors.black),
+          onPressed: () => _showExitConfirmation(context),
+        ),
         title: _buildAppBarTitle(),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -41,8 +44,8 @@ class LiveTestScreen extends StatelessWidget {
   Widget _buildAppBarTitle() {
     return Row(
       children: [
-        const Icon(Icons.security, color: Color(0xFF00695C), size: 20),
-        const SizedBox(width: 8),
+        const Icon(Icons.security, color: Color(0xFF00695C), size: 16),
+        const SizedBox(width: 4),
         const Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -277,6 +280,30 @@ class LiveTestScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showExitConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Quit Exam?'),
+        content: const Text('Are you sure you want to exit the exam? Your progress will not be saved.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('CANCEL', style: TextStyle(color: Colors.grey)),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context); // Close dialog
+              Navigator.pop(context); // Exit exam screen
+            },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white),
+            child: const Text('QUIT'),
           ),
         ],
       ),
