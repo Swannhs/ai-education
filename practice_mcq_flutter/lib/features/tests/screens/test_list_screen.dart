@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
+import '../../../core/routing/app_router.dart';
 
 class TestListScreen extends StatelessWidget {
   const TestListScreen({super.key});
@@ -96,7 +97,9 @@ class TestListScreen extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, AppRouter.testDetail);
+            },
             style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF004D40), foregroundColor: Colors.white),
             child: const Text('Join Live Exam'),
           ),
@@ -220,7 +223,9 @@ class TestListScreen extends StatelessWidget {
             )
           else if (isLive)
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, AppRouter.testDetail);
+              },
               style: ElevatedButton.styleFrom(minimumSize: const Size(double.infinity, 48), backgroundColor: const Color(0xFF00695C)),
               child: Text(buttonLabel),
             )

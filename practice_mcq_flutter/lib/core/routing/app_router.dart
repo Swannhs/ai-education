@@ -30,6 +30,12 @@ import '../../features/practice/screens/lesson_screen.dart';
 
 import '../../features/auth/screens/verify_code_screen.dart';
 
+import '../../features/tests/screens/test_detail_screen.dart';
+
+import '../../features/tests/screens/live_test_screen.dart';
+
+import '../../features/tests/screens/test_result_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
@@ -45,6 +51,10 @@ class AppRouter {
   static const String wrongAnswers = '/wrong-answers';
   static const String lesson = '/lesson';
   static const String testList = '/test-list';
+  static const String testDetail = '/test-detail';
+  static const String liveTest = '/live-test';
+  static const String testResult = '/test-result';
+  static const String meritList = '/merit-list';
   static const String profile = '/profile';
   static const String routine = '/routine';
   static const String learn = '/learn';
@@ -64,6 +74,10 @@ class AppRouter {
     wrongAnswers: (context) => const WrongAnswersScreen(),
     lesson: (context) => const LessonScreen(),
     testList: (context) => const TestListScreen(),
+    testDetail: (context) => const TestDetailScreen(),
+    liveTest: (context) => const LiveTestScreen(),
+    testResult: (context) => const TestResultScreen(),
+    meritList: (context) => const MeritListScreen(),
     profile: (context) => const ProfileScreen(),
     routine: (context) => const DailyRoutineScreen(),
     learn: (context) => const LearnLibraryScreen(),
@@ -99,6 +113,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LessonScreen());
       case testList:
         return MaterialPageRoute(builder: (_) => const TestListScreen());
+      case testDetail:
+        return MaterialPageRoute(builder: (_) => const TestDetailScreen());
+      case liveTest:
+        return MaterialPageRoute(builder: (_) => const LiveTestScreen());
+      case testResult:
+        return MaterialPageRoute(builder: (_) => const TestResultScreen());
+      case meritList:
+        return MaterialPageRoute(builder: (_) => const MeritListScreen());
       case profile:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case routine:
