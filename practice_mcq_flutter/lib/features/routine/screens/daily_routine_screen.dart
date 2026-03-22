@@ -10,58 +10,67 @@ class DailyRoutineScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       drawer: const AppDrawer(),
       appBar: AppBar(
         leading: Builder(
           builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.menu, color: Colors.black),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-        title: const Text('BCS Prep Pro', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
-        actions: [
-          const Icon(Icons.notifications_none),
-          const SizedBox(width: 8),
-          const CircleAvatar(radius: 12, child: Icon(Icons.person, size: 12)),
-          const SizedBox(width: 16),
+        title: const Text('BCS Prep Pro', style: TextStyle(color: Color(0xFF00695C), fontWeight: FontWeight.bold)),
+        actions: const [
+          Icon(Icons.notifications_none, color: Colors.black),
+          SizedBox(width: 16),
+          CircleAvatar(radius: 16, backgroundColor: Color(0xFF00B074), child: Text('SA', style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold))),
+          SizedBox(width: 16),
         ],
-        elevation: 0,
         backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('STUDY PLAN', style: TextStyle(color: AppColors.textSecondary, fontSize: 10, fontWeight: FontWeight.bold)),
-            const Text('Daily Routine', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+            const Text('STUDY PLAN', style: TextStyle(color: AppColors.textSecondary, fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1.0)),
+            const SizedBox(height: 8),
+            const Text('Daily Routine', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 24),
-            _buildCalendarStrip(),
+            _buildCalendar(),
             const SizedBox(height: 24),
             Row(
               children: [
-                _buildStatDisplay('65%', 'Daily Goal Met', Icons.trending_up, Colors.green),
+                Expanded(child: _buildStatCard('65%', 'Daily Goal Met', Icons.trending_up, Colors.green)),
                 const SizedBox(width: 16),
-                _buildStatDisplay('4.2h', 'Study Session', Icons.timer, Colors.blue),
+                Expanded(child: _buildStatCard('4.2h', 'Study Session', Icons.timer_outlined, Colors.blue)),
               ],
             ),
             const SizedBox(height: 24),
-            _buildAITutorAnalysisCard(),
+            _buildAITutorCard(),
             const SizedBox(height: 32),
-            _buildSectionHeader('Today\'s Tasks', '3 / 5 Done'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Today\'s Tasks', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const Text('3 / 5 Done', style: TextStyle(color: AppColors.textSecondary, fontSize: 11, fontWeight: FontWeight.bold)),
+              ],
+            ),
             const SizedBox(height: 16),
             _buildTaskItem(context, 'Bengali Literature: Medieval Age', 'Lesson • 45 mins', true, 
               onTap: () => Navigator.pushNamed(context, AppRouter.lessonContentViewer)),
             _buildTaskItem(context, 'General Science: Physics Basics', 'Lesson • 60 mins', true,
               onTap: () => Navigator.pushNamed(context, AppRouter.lessonContentViewer)),
-            _buildTaskItem(context, 'Daily Mock Test: English Grammar', 'Quiz • 30 mins • Mandatory', false, hasStart: true,
+            _buildTaskItem(context, 'Daily Mock Test: English Grammar', 'Quiz • 30 mins • Mandatory', false, showStart: true,
               onTap: () => Navigator.pushNamed(context, AppRouter.testDetail)),
             _buildTaskItem(context, 'Mathematics: Geometry Part 1', 'Lesson • 90 mins', false,
               onTap: () => Navigator.pushNamed(context, AppRouter.lessonContentViewer)),
             _buildTaskItem(context, 'Current Affairs: International', 'Reading • 20 mins', false,
               onTap: () => Navigator.pushNamed(context, AppRouter.lessonContentViewer)),
-            const SizedBox(height: 24),
-            _buildAddCustomTaskButton(),
+            const SizedBox(height: 16),
+            _buildAddCustomTask(),
+            const SizedBox(height: 32),
           ],
         ),
       ),
@@ -70,25 +79,25 @@ class DailyRoutineScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF00695C),
         child: const Icon(Icons.add, color: Colors.white),
       ),
-      bottomNavigationBar: _buildBottomNav(),
+      bottomNavigationBar: const AppBottomNav(currentIndex: 2), // Routine tab
     );
   }
 
-  Widget _buildCalendarStrip() {
+  Widget _buildCalendar() {
     return Container(
       padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(color: const Color(0xFFF0F7FF), borderRadius: BorderRadius.circular(16)),
+      decoration: BoxDecoration(color: const Color(0xFFF0F7FF), borderRadius: BorderRadius.circular(24)),
       child: Column(
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('September 2024', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('September 2024', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
               Row(
                 children: [
-                  const Icon(Icons.chevron_left, size: 16),
-                  const SizedBox(width: 16),
-                  const Icon(Icons.chevron_right, size: 16),
+                  Icon(Icons.chevron_left, size: 20),
+                  SizedBox(width: 16),
+                  Icon(Icons.chevron_right, size: 20),
                 ],
               ),
             ],
@@ -97,13 +106,13 @@ class DailyRoutineScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildDayItem('MON', '11', false),
-              _buildDayItem('TUE', '12', false),
-              _buildDayItem('WED', '13', true),
-              _buildDayItem('THU', '14', false),
-              _buildDayItem('FRI', '15', false),
-              _buildDayItem('SAT', '16', false),
-              _buildDayItem('SUN', '17', false),
+              _buildCalendarDay('MON', '11'),
+              _buildCalendarDay('TUE', '12'),
+              _buildCalendarDay('WED', '13', isActive: true),
+              _buildCalendarDay('THU', '14'),
+              _buildCalendarDay('FRI', '15'),
+              _buildCalendarDay('SAT', '16'),
+              _buildCalendarDay('SUN', '17'),
             ],
           ),
         ],
@@ -111,159 +120,123 @@ class DailyRoutineScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDayItem(String day, String date, bool isSelected) {
+  Widget _buildCalendarDay(String day, String date, {bool isActive = false}) {
     return Column(
       children: [
-        Text(day, style: TextStyle(fontSize: 10, color: isSelected ? AppColors.primary : AppColors.textSecondary, fontWeight: FontWeight.bold)),
+        Text(day, style: const TextStyle(fontSize: 9, color: AppColors.textSecondary, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         Container(
-          padding: const EdgeInsets.all(12),
+          width: 36,
+          height: 36,
           decoration: BoxDecoration(
-            color: isSelected ? AppColors.primary : Colors.transparent,
-            borderRadius: BorderRadius.circular(12),
+            color: isActive ? const Color(0xFF00695C) : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
           ),
-          child: Text(
-            date,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: isSelected ? Colors.white : AppColors.textMain,
-            ),
+          child: Center(
+            child: Text(date, style: TextStyle(color: isActive ? Colors.white : Colors.black87, fontWeight: FontWeight.bold, fontSize: 13)),
           ),
         ),
-        if (isSelected) Container(margin: const EdgeInsets.only(top: 4), width: 4, height: 4, decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle)),
+        if (isActive) const Padding(padding: EdgeInsets.only(top: 4), child: Icon(Icons.circle, size: 4, color: Color(0xFF00695C))),
       ],
     );
   }
 
-  Widget _buildStatDisplay(String val, String label, IconData icon, Color color) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.border.withOpacity(0.5)),
-          boxShadow: [BoxShadow(color: color.withOpacity(0.1), blurRadius: 10, offset: const Offset(0, 4))],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(icon, color: color, size: 20),
-            const SizedBox(height: 12),
-            Text(val, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            Text(label, style: const TextStyle(fontSize: 10, color: AppColors.textSecondary)),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildAITutorAnalysisCard() {
+  Widget _buildStatCard(String value, String label, IconData icon, Color color) {
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF00B050),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
+        border: Border(left: BorderSide(color: color, width: 4)),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 10, offset: const Offset(0, 4))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Container(padding: const EdgeInsets.all(8), decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(8)), child: const Icon(Icons.psychology, color: Colors.white)),
-              const SizedBox(width: 12),
-              const Text('AI TUTOR ANALYSIS', style: TextStyle(color: Colors.white70, fontSize: 10, fontWeight: FontWeight.bold)),
-            ],
-          ),
-          const SizedBox(height: 16),
-          const Text('Complete 3 Math topics today to stay on track.', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 8),
-          const Text(
-            'Based on your recent performance, you need more practice in Geometry and Algebra to hit your Batch 45 target.',
-            style: TextStyle(color: Colors.white70, fontSize: 12),
+          Icon(icon, color: color, size: 20),
+          const SizedBox(height: 12),
+          Text(value, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+          Text(label, style: const TextStyle(color: AppColors.textSecondary, fontSize: 10)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAITutorCard() {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(color: const Color(0xFF00B074), borderRadius: BorderRadius.circular(24)),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(12)), child: const Icon(Icons.psychology_outlined, color: Colors.white, size: 24)),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('AI TUTOR ANALYSIS', style: TextStyle(color: Colors.white70, fontSize: 9, fontWeight: FontWeight.bold, letterSpacing: 0.5)),
+                const SizedBox(height: 8),
+                const Text('Complete 3 Math topics today to stay on track.', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold, height: 1.3)),
+                const SizedBox(height: 8),
+                const Text('Based on your recent performance, you need more practice in Geometry and Algebra to hit your Batch 45 target.', style: TextStyle(color: Colors.white70, fontSize: 12, height: 1.4)),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSectionHeader(String title, String trailing) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        Text(trailing, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
-      ],
-    );
-  }
-
-  Widget _buildTaskItem(
-    BuildContext context, 
-    String title, 
-    String subtitle, 
-    bool isCompleted, {
-    bool hasStart = false,
-    VoidCallback? onTap,
-  }) {
+  Widget _buildTaskItem(BuildContext context, String title, String subtitle, bool isDone, {bool showStart = false, VoidCallback? onTap}) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(20),
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.border.withOpacity(0.5)),
-        ),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20), border: Border.all(color: AppColors.border.withOpacity(0.5))),
         child: Row(
           children: [
-            Icon(isCompleted ? Icons.check_circle : Icons.circle_outlined, color: isCompleted ? AppColors.primary : AppColors.textSecondary),
+            Icon(isDone ? Icons.check_circle : Icons.circle_outlined, color: isDone ? const Color(0xFF1B5E20) : AppColors.textSecondary, size: 24),
             const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, decoration: isCompleted ? TextDecoration.lineThrough : null)),
-                  Text(subtitle, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+                  Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: isDone ? AppColors.textSecondary : Colors.black87, decoration: isDone ? TextDecoration.lineThrough : null)),
+                  const SizedBox(height: 4),
+                  Text(subtitle, style: const TextStyle(color: AppColors.textSecondary, fontSize: 11)),
                 ],
               ),
             ),
-            if (hasStart)
+            if (showStart)
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(color: const Color(0xFFE8F5E9), borderRadius: BorderRadius.circular(8)),
-                child: const Text('Start', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 12)),
+                child: const Text('Start', style: TextStyle(color: Color(0xFF1B5E20), fontSize: 11, fontWeight: FontWeight.bold)),
               )
             else
-              const Icon(Icons.drag_indicator, color: AppColors.border),
+              const Icon(Icons.drag_indicator, color: AppColors.border, size: 20),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildAddCustomTaskButton() {
+  Widget _buildAddCustomTask() {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 16),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.border, style: BorderStyle.none), // Should be dashed in real implementation
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), border: Border.all(color: AppColors.border, style: BorderStyle.none)), // Dotted border alternative
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.add_circle_outline, color: AppColors.textSecondary, size: 20),
-          const SizedBox(width: 8),
-          const Text('Add custom task', style: TextStyle(color: AppColors.textSecondary, fontWeight: FontWeight.bold)),
+          Icon(Icons.add_circle_outline, color: AppColors.textSecondary, size: 18),
+          SizedBox(width: 8),
+          Text('Add custom task', style: TextStyle(color: AppColors.textSecondary, fontSize: 13, fontWeight: FontWeight.w500)),
         ],
       ),
     );
-  }
-
-  Widget _buildBottomNav() {
-    return const AppBottomNav(currentIndex: 2);
   }
 }

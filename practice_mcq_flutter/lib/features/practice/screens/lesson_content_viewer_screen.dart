@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../core/services/ai_service.dart';
+import '../../../core/models/ai_response.dart';
 
 class LessonContentViewerScreen extends StatefulWidget {
   final String title;
@@ -187,10 +189,7 @@ class _LessonContentViewerScreenState extends State<LessonContentViewerScreen> {
   Widget _buildAIExplanationShortcut() {
     return Container(
       padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF1F8E9),
-        borderRadius: BorderRadius.circular(16),
-      ),
+      decoration: BoxDecoration(color: const Color(0xFFF1F8E9), borderRadius: BorderRadius.circular(16)),
       child: Row(
         children: [
           const Icon(Icons.auto_awesome, color: AppColors.primary),
@@ -199,7 +198,83 @@ class _LessonContentViewerScreenState extends State<LessonContentViewerScreen> {
             child: Text('Stuck on a concept? Ask our AI Tutor for a simplified explanation.', style: TextStyle(fontSize: 12, color: AppColors.textMain)),
           ),
           const SizedBox(width: 8),
-          TextButton(onPressed: () {}, child: const Text('Ask AI', style: TextStyle(fontWeight: FontWeight.bold))),
+          TextButton(
+            onPressed: () => _showSimplifySheet(context),
+            child: const Text('Ask AI', style: TextStyle(fontWeight: FontWeight.bold)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showSimplifySheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => FutureBuilder<AIResponse>(
+        future: CoreAIService.getAIResponse('SIMPLIFY_LESSON', {}),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return _buildLoadingSheet();
+          }
+          final ai = snapshot.data!;
+          return _buildSimplifyResultSheet(context, ai);
+        },
+      ),
+    );
+  }
+
+  Widget _buildLoadingSheet() {
+    return Container(
+      height: 250,
+      decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      child: const Center(child: CircularProgressIndicator(color: AppColors.primary)),
+    );
+  }
+
+  Widget _buildSimplifyResultSheet(BuildContext context, AIResponse ai) {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.auto_awesome, color: Colors.blue),
+              const SizedBox(width: 12),
+              Text(ai.responseTitle ?? 'Simplified Explanation', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Text(ai.content ?? '', style: const TextStyle(fontSize: 15, height: 1.5)),
+          const SizedBox(height: 20),
+          if (ai.bulletPoints != null)
+            ...ai.bulletPoints!.map((p) => Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('• ', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Expanded(child: Text(p, style: const TextStyle(fontSize: 14))),
+                    ],
+                  ),
+                )),
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(color: Colors.amber.withOpacity(0.1), borderRadius: BorderRadius.circular(12)),
+            child: Text('💡 TIP: ${ai.memoryTip}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+          ),
+          const SizedBox(height: 24),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context),
+            style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary, foregroundColor: Colors.white, minimumSize: const Size(double.infinity, 50)),
+            child: const Text('I Understand'),
+          ),
+          const SizedBox(height: 16),
         ],
       ),
     );

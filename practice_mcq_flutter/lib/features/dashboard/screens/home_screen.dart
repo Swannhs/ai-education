@@ -4,6 +4,8 @@ import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
 import '../../../shared/widgets/app_drawer.dart';
 import '../../practice/screens/practice_screen.dart';
+import '../../../core/services/ai_service.dart';
+import '../../../core/models/ai_response.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -118,33 +120,114 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildAIRecommendationCard(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFE0F2F1),
-        borderRadius: BorderRadius.circular(16),
+        color: const Color(0xFF00B074), // Primary Green for AI
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF00B074).withOpacity(0.3),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
-      child: InkWell(
-        onTap: () => Navigator.pushNamed(context, AppRouter.aiAssistant),
-        child: Row(
-          children: [
-            const Icon(Icons.auto_awesome, color: AppColors.primary),
-            const SizedBox(width: 16),
-            Expanded(
-              child: RichText(
-                text: const TextSpan(
-                  text: 'AI Recommendation\n',
-                  style: TextStyle(color: AppColors.textMain, fontWeight: FontWeight.bold, fontSize: 14),
-                  children: [
-                    TextSpan(
-                      text: 'Focus on Medieval Bengal today to boost your score by 15%',
-                      style: TextStyle(fontWeight: FontWeight.normal, fontSize: 12, color: AppColors.textSecondary),
-                    ),
-                  ],
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () => _showNextActionSheet(context),
+          borderRadius: BorderRadius.circular(20),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(12)),
+                  child: const Icon(Icons.psychology, color: Colors.white, size: 24),
                 ),
-              ),
+                const SizedBox(width: 16),
+                const Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('AI SYSTEM SUGGESTION', style: TextStyle(color: Colors.white70, fontSize: 9, fontWeight: FontWeight.bold, letterSpacing: 1.0)),
+                      SizedBox(height: 4),
+                      Text('Focus on Medieval Bengal today to boost score by 15%', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold, height: 1.3)),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.arrow_forward_ios, color: Colors.white, size: 14),
+              ],
             ),
-          ],
+          ),
         ),
+      ),
+    );
+  }
+
+  void _showNextActionSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => FutureBuilder<AIResponse>(
+        future: CoreAIService.getAIResponse('ANALYZE_PERFORMANCE', {}),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return _buildLoadingSheet();
+          }
+          final ai = snapshot.data!;
+          return _buildRecommendationResultSheet(context, ai);
+        },
+      ),
+    );
+  }
+
+  Widget _buildLoadingSheet() {
+    return Container(
+      height: 250,
+      decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      child: const Center(child: CircularProgressIndicator(color: AppColors.primary)),
+    );
+  }
+
+  Widget _buildRecommendationResultSheet(BuildContext context, AIResponse ai) {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.auto_awesome, color: Color(0xFF00B074)),
+              const SizedBox(width: 12),
+              const Text('Personalized Strategy', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              const Spacer(),
+              IconButton(onPressed: () => Navigator.pop(context), icon: const Icon(Icons.close)),
+            ],
+          ),
+          const Divider(),
+          const SizedBox(height: 16),
+          Text(ai.headline ?? '', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.primary)),
+          const SizedBox(height: 12),
+          Text(ai.summary ?? '', style: const TextStyle(fontSize: 14, color: AppColors.textMain, height: 1.4)),
+          const SizedBox(height: 16),
+          const Text('WHY THIS ACTION?', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: AppColors.textSecondary)),
+          const SizedBox(height: 4),
+          Text(ai.rationale ?? '', style: const TextStyle(fontSize: 13, color: AppColors.textSecondary)),
+          const SizedBox(height: 24),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, AppRouter.practice);
+            },
+            style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF00695C), foregroundColor: Colors.white, minimumSize: const Size(double.infinity, 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+            child: const Text('Start Recommended Practice'),
+          ),
+          const SizedBox(height: 16),
+        ],
       ),
     );
   }
