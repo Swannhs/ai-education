@@ -39,6 +39,10 @@ import '../../features/tests/screens/test_result_screen.dart';
 import '../../features/analytics/screens/analytics_screen.dart';
 
 import '../../features/profile/screens/settings_screen.dart';
+import '../../features/auth/screens/new_password_screen.dart';
+import '../../features/auth/screens/exam_onboarding_screen.dart';
+import '../../features/practice/screens/favorites_library_screen.dart';
+import '../../features/tests/screens/past_papers_screen.dart';
 import '../../features/chat/screens/ai_assistant_chat_screen.dart';
 import '../../features/chat/screens/voice_assistant_screen.dart';
 import '../../features/tests/screens/review_submission_screen.dart';
@@ -57,15 +61,19 @@ class AppRouter {
   static const String forgotPassword = '/forgot-password';
   static const String verifyEmail = '/verify-email';
   static const String verifyCode = '/verify-code';
+  static const String newPassword = '/new-password';
+  static const String onboarding = '/onboarding';
   static const String home = '/home';
   static const String practice = '/practice';
   static const String practiceResult = '/practice-result';
   static const String subjectDetail = '/subject-detail';
   static const String topicList = '/topic-list';
   static const String wrongAnswers = '/wrong-answers';
+  static const String favorites = '/favorites';
   static const String lesson = '/lesson';
   static const String testList = '/test-list';
   static const String testDetail = '/test-detail';
+  static const String pastPapers = '/past-papers';
   static const String liveTest = '/live-test';
   static const String testResult = '/test-result';
   static const String meritList = '/merit-list';
@@ -91,15 +99,19 @@ class AppRouter {
     forgotPassword: (context) => const ForgotPasswordScreen(),
     verifyEmail: (context) => const VerifyEmailScreen(),
     verifyCode: (context) => const VerifyCodeScreen(),
+    newPassword: (context) => const NewPasswordScreen(),
+    onboarding: (context) => const ExamOnboardingScreen(),
     home: (context) => const HomeScreen(),
     practice: (context) => const PracticeScreen(),
     practiceResult: (context) => const PracticeResultScreen(),
     subjectDetail: (context) => const SubjectDetailScreen(),
     topicList: (context) => const TopicListScreen(),
     wrongAnswers: (context) => const WrongAnswersScreen(),
+    favorites: (context) => const FavoritesLibraryScreen(),
     lesson: (context) => const LessonScreen(),
     testList: (context) => const TestListScreen(),
     testDetail: (context) => const TestDetailScreen(),
+    pastPapers: (context) => const PastPapersScreen(),
     liveTest: (context) => const LiveTestScreen(),
     testResult: (context) => const TestResultScreen(),
     meritList: (context) => const MeritListScreen(),
@@ -133,6 +145,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const VerifyEmailScreen());
       case verifyCode:
         return MaterialPageRoute(builder: (_) => const VerifyCodeScreen());
+      case newPassword:
+        return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
+      case onboarding:
+        return MaterialPageRoute(builder: (_) => const ExamOnboardingScreen());
       case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case practice:
@@ -145,12 +161,16 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const TopicListScreen());
       case wrongAnswers:
         return MaterialPageRoute(builder: (_) => const WrongAnswersScreen());
+      case favorites:
+        return MaterialPageRoute(builder: (_) => const FavoritesLibraryScreen());
       case lesson:
         return MaterialPageRoute(builder: (_) => const LessonScreen());
       case testList:
         return MaterialPageRoute(builder: (_) => const TestListScreen());
       case testDetail:
         return MaterialPageRoute(builder: (_) => const TestDetailScreen());
+      case pastPapers:
+        return MaterialPageRoute(builder: (_) => const PastPapersScreen());
       case liveTest:
         return MaterialPageRoute(builder: (_) => const LiveTestScreen());
       case testResult:
