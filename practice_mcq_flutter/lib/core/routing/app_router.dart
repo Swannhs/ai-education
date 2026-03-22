@@ -39,6 +39,16 @@ import '../../features/tests/screens/test_result_screen.dart';
 import '../../features/analytics/screens/analytics_screen.dart';
 
 import '../../features/profile/screens/settings_screen.dart';
+import '../../features/chat/screens/ai_assistant_chat_screen.dart';
+import '../../features/chat/screens/voice_assistant_screen.dart';
+import '../../features/tests/screens/review_submission_screen.dart';
+import '../../features/tests/screens/question_palette_screen.dart';
+import '../../features/profile/screens/subscription_packages_screen.dart';
+import '../../features/profile/screens/exam_preferences_screen.dart';
+import '../../features/analytics/screens/subject_performance_screen.dart';
+import '../../features/analytics/screens/weak_topics_analysis_screen.dart';
+import '../../features/analytics/screens/test_history_screen.dart';
+import '../../features/tests/screens/merit_list_screen.dart';
 
 class AppRouter {
   static const String splash = '/';
@@ -69,6 +79,10 @@ class AppRouter {
   static const String examPreferences = '/exam-preferences';
   static const String routine = '/routine';
   static const String learn = '/learn';
+  static const String aiAssistant = '/ai-assistant';
+  static const String voiceAssistant = '/voice-assistant';
+  static const String reviewSubmission = '/review-submission';
+  static const String questionPalette = '/question-palette';
 
   static Map<String, WidgetBuilder> get routes => {
     splash: (context) => const SplashScreen(),
@@ -99,6 +113,10 @@ class AppRouter {
     examPreferences: (context) => const ExamPreferencesScreen(),
     routine: (context) => const DailyRoutineScreen(),
     learn: (context) => const LearnLibraryScreen(),
+    aiAssistant: (context) => const AIAssistantChatScreen(),
+    voiceAssistant: (context) => const VoiceAssistantScreen(),
+    reviewSubmission: (context) => const ReviewSubmissionScreen(),
+    questionPalette: (context) => const QuestionPaletteScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -159,6 +177,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const DailyRoutineScreen());
       case learn:
         return MaterialPageRoute(builder: (_) => const LearnLibraryScreen());
+      case aiAssistant:
+        return MaterialPageRoute(builder: (_) => const AIAssistantChatScreen());
+      case voiceAssistant:
+        return MaterialPageRoute(builder: (_) => const VoiceAssistantScreen());
+      case reviewSubmission:
+        return MaterialPageRoute(builder: (_) => const ReviewSubmissionScreen());
+      case questionPalette:
+        return MaterialPageRoute(builder: (_) => const QuestionPaletteScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
