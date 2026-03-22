@@ -39,7 +39,13 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 20),
               _buildLabel('Password'),
               _buildPasswordField(),
-              _buildForgotPasswordLink(),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () => Navigator.pushNamed(context, AppRouter.forgotPassword),
+                  child: const Text('Forgot Password?', style: TextStyle(color: AppColors.primary)),
+                ),
+              ),
               const SizedBox(height: 24),
               PrimaryButton(
                 text: 'Sign In',
@@ -56,7 +62,28 @@ class LoginScreen extends StatelessWidget {
                 onPressed: () {},
               ),
               const SizedBox(height: 48),
-              _buildSignUpPrompt(),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: "Don't have an account? ",
+                    style: const TextStyle(color: AppColors.textSecondary),
+                    children: [
+                      WidgetSpan(
+                        child: InkWell(
+                          onTap: () => Navigator.pushNamed(context, AppRouter.signup),
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              color: AppColors.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(height: 40),
               _buildSecurityBadges(),
             ],
@@ -111,16 +138,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildForgotPasswordLink() {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-        onPressed: () {},
-        child: const Text('Forgot Password?', style: TextStyle(color: AppColors.primary)),
-      ),
-    );
-  }
-
   Widget _buildDivider() {
     return const Row(
       children: [
@@ -131,26 +148,6 @@ class LoginScreen extends StatelessWidget {
         ),
         Expanded(child: Divider()),
       ],
-    );
-  }
-
-  Widget _buildSignUpPrompt() {
-    return Center(
-      child: RichText(
-        text: const TextSpan(
-          text: "Don't have an account? ",
-          style: TextStyle(color: AppColors.textSecondary),
-          children: [
-            TextSpan(
-              text: 'Sign Up',
-              style: TextStyle(
-                color: AppColors.primary,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 

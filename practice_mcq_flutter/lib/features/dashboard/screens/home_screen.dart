@@ -239,32 +239,35 @@ class HomeScreen extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          _buildSubjectItem('Bangla', Icons.book, const Color(0xFFE3F2FD)),
-          _buildSubjectItem('English', Icons.translate, const Color(0xFFFFF3E0)),
-          _buildSubjectItem('General Math', Icons.calculate, const Color(0xFFF3E5F5)),
+          _buildSubjectItem(context, 'Bangla', Icons.book, const Color(0xFFE3F2FD)),
+          _buildSubjectItem(context, 'English', Icons.translate, const Color(0xFFFFF3E0)),
+          _buildSubjectItem(context, 'General Math', Icons.calculate, const Color(0xFFF3E5F5)),
         ],
       ),
     );
   }
 
-  Widget _buildSubjectItem(String name, IconData icon, Color color) {
-    return Container(
-      width: 140,
-      margin: const EdgeInsets.only(right: 16),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), border: const BorderSide(color: AppColors.border)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(8)),
-            child: Icon(icon, color: Colors.blue),
-          ),
-          const SizedBox(height: 16),
-          Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
-          const Text('45 Lessons', style: TextStyle(fontSize: 10, color: AppColors.textSecondary)),
-        ],
+  Widget _buildSubjectItem(BuildContext context, String name, IconData icon, Color color) {
+    return InkWell(
+      onTap: () => Navigator.pushNamed(context, '/subject-detail'),
+      child: Container(
+        width: 140,
+        margin: const EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), border: const BorderSide(color: AppColors.border)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(8)),
+              child: Icon(icon, color: Colors.blue),
+            ),
+            const SizedBox(height: 16),
+            Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
+            const Text('45 Lessons', style: TextStyle(fontSize: 10, color: AppColors.textSecondary)),
+          ],
+        ),
       ),
     );
   }
