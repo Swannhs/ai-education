@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
+import '../../../shared/widgets/app_drawer.dart';
 import '../../../core/routing/app_router.dart';
 
 class TestListScreen extends StatelessWidget {
@@ -9,6 +10,7 @@ class TestListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const AppDrawer(),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20.0),
@@ -61,14 +63,19 @@ class TestListScreen extends StatelessWidget {
   }
 
   Widget _buildHeader() {
-    return const Row(
-      children: [
-        CircleAvatar(radius: 18, child: Icon(Icons.person)),
-        SizedBox(width: 12),
-        Text('GovPrep BD', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-        Spacer(),
-        Icon(Icons.notifications_none, color: AppColors.primary),
-      ],
+    return Builder(
+      builder: (context) => Row(
+        children: [
+          IconButton(
+            icon: const CircleAvatar(radius: 18, child: Icon(Icons.menu, size: 20)),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+          const SizedBox(width: 12),
+          const Text('GovPrep BD', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          const Spacer(),
+          const Icon(Icons.notifications_none, color: AppColors.primary),
+        ],
+      ),
     );
   }
 

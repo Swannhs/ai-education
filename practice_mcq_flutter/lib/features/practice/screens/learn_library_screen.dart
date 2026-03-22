@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
+import '../../../shared/widgets/app_drawer.dart';
 
 class LearnLibraryScreen extends StatelessWidget {
   const LearnLibraryScreen({super.key});
@@ -8,10 +9,13 @@ class LearnLibraryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const AppDrawer(),
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
         title: const Text('Learn', style: TextStyle(fontWeight: FontWeight.bold)),
         actions: [

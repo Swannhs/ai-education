@@ -25,7 +25,7 @@ class AppBottomNav extends StatelessWidget {
             route = AppRouter.home;
             break;
           case 1:
-            route = AppRouter.learn;
+            route = AppRouter.learnLibrary;
             break;
           case 2:
             route = AppRouter.routine;

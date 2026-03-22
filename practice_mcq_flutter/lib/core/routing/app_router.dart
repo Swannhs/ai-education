@@ -54,6 +54,12 @@ import '../../features/analytics/screens/weak_topics_analysis_screen.dart';
 import '../../features/analytics/screens/test_history_screen.dart';
 import '../../features/tests/screens/merit_list_screen.dart';
 
+import '../../features/practice/screens/lesson_content_viewer_screen.dart';
+import '../../features/practice/screens/chapter_list_screen.dart';
+import '../../features/analytics/screens/progress_trends_screen.dart';
+import '../../features/profile/screens/help_faq_screen.dart';
+import '../../features/chat/screens/ai_recommendations_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
@@ -86,7 +92,12 @@ class AppRouter {
   static const String subscription = '/subscription';
   static const String examPreferences = '/exam-preferences';
   static const String routine = '/routine';
-  static const String learn = '/learn';
+  static const String learnLibrary = '/learn-library';
+  static const String lessonContentViewer = '/lesson-content-viewer';
+  static const String chapterList = '/chapter-list';
+  static const String progressTrends = '/progress-trends';
+  static const String helpFaq = '/help-faq';
+  static const String aiRecommendations = '/ai-recommendations';
   static const String aiAssistant = '/ai-assistant';
   static const String voiceAssistant = '/voice-assistant';
   static const String reviewSubmission = '/review-submission';
@@ -124,11 +135,15 @@ class AppRouter {
     subscription: (context) => const SubscriptionPackagesScreen(),
     examPreferences: (context) => const ExamPreferencesScreen(),
     routine: (context) => const DailyRoutineScreen(),
-    learn: (context) => const LearnLibraryScreen(),
+    learnLibrary: (context) => const LearnLibraryScreen(),
     aiAssistant: (context) => const AIAssistantChatScreen(),
     voiceAssistant: (context) => const VoiceAssistantScreen(),
     reviewSubmission: (context) => const ReviewSubmissionScreen(),
-    questionPalette: (context) => const QuestionPaletteScreen(),
+    chapterList: (context) => const ChapterListScreen(),
+    progressTrends: (context) => const ProgressTrendsScreen(),
+    helpFaq: (context) => const HelpFAQScreen(),
+    aiRecommendations: (context) => const AIRecommendationsScreen(),
+    lessonContentViewer: (context) => const LessonContentViewerScreen(),
   };
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
@@ -195,8 +210,18 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ExamPreferencesScreen());
       case routine:
         return MaterialPageRoute(builder: (_) => const DailyRoutineScreen());
-      case learn:
+      case learnLibrary:
         return MaterialPageRoute(builder: (_) => const LearnLibraryScreen());
+      case lessonContentViewer:
+        return MaterialPageRoute(builder: (_) => const LessonContentViewerScreen());
+      case chapterList:
+        return MaterialPageRoute(builder: (_) => const ChapterListScreen());
+      case progressTrends:
+        return MaterialPageRoute(builder: (_) => const ProgressTrendsScreen());
+      case helpFaq:
+        return MaterialPageRoute(builder: (_) => const HelpFAQScreen());
+      case aiRecommendations:
+        return MaterialPageRoute(builder: (_) => const AIRecommendationsScreen());
       case aiAssistant:
         return MaterialPageRoute(builder: (_) => const AIAssistantChatScreen());
       case voiceAssistant:

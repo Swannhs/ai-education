@@ -29,8 +29,8 @@ class PracticeScreen extends StatelessWidget {
             _buildQuestionCard(),
             const SizedBox(height: 32),
             _buildOptionsList(context),
-            const SizedBox(height: 40),
-            _buildAIAssistantSection(),
+            const SizedBox(height: 32),
+            _buildAIAssistantSection(context),
           ],
         ),
       ),
@@ -127,7 +127,7 @@ class PracticeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAIAssistantSection() {
+  Widget _buildAIAssistantSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -141,26 +141,35 @@ class PracticeScreen extends StatelessWidget {
           crossAxisSpacing: 12,
           childAspectRatio: 2.5,
           children: [
-            _buildAIAction('Explain Answer', Icons.lightbulb_outline, Colors.blue),
-            _buildAIAction('Ask AI Tutor', Icons.psychology_outlined, Colors.purple),
-            _buildAIAction('Simplify Text', Icons.auto_awesome_outlined, Colors.green),
-            _buildAIAction('Voice Ask', Icons.mic_none, Colors.orange),
+            _buildAIAction(context, 'Explain Answer', Icons.lightbulb_outline, Colors.blue),
+            _buildAIAction(context, 'Ask AI Tutor', Icons.psychology_outlined, Colors.purple),
+            _buildAIAction(context, 'Simplify Text', Icons.auto_awesome_outlined, Colors.green),
+            _buildAIAction(context, 'Voice Ask', Icons.mic_none, Colors.orange),
           ],
         ),
       ],
     );
   }
 
-  Widget _buildAIAction(String label, IconData icon, Color color) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12), border: Border.all(color: AppColors.border.withOpacity(0.5))),
-      child: Row(
-        children: [
-          Icon(icon, color: color, size: 20),
-          const SizedBox(width: 8),
-          Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-        ],
+  Widget _buildAIAction(BuildContext context, String label, IconData icon, Color color) {
+    return InkWell(
+      onTap: () {
+        if (label == 'Voice Ask') {
+          Navigator.pushNamed(context, AppRouter.voiceAssistant);
+        } else {
+          Navigator.pushNamed(context, AppRouter.aiAssistant);
+        }
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12), border: Border.all(color: AppColors.border.withOpacity(0.5))),
+        child: Row(
+          children: [
+            Icon(icon, color: color, size: 20),
+            const SizedBox(width: 8),
+            Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+          ],
+        ),
       ),
     );
   }

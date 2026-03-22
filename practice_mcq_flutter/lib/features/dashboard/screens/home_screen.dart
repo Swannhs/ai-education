@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
+import '../../../shared/widgets/app_drawer.dart';
 import '../../practice/screens/practice_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const AppDrawer(),
       bottomNavigationBar: _buildBottomNav(),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -21,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 24),
               _buildCurrentCourseCard(),
               const SizedBox(height: 20),
-              _buildAIRecommendationCard(),
+              _buildAIRecommendationCard(context),
               const SizedBox(height: 24),
               _buildSectionHeader('Today\'s Routine', '3 of 4 done'),
               const SizedBox(height: 12),
@@ -44,24 +46,31 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildHeader() {
-    return const Row(
-      children: [
-        CircleAvatar(
-          radius: 20,
-          backgroundColor: AppColors.border,
-          child: Icon(Icons.person),
-        ),
-        SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Good morning,', style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
-            Text('Sadek', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-          ],
-        ),
-        Spacer(),
-        Icon(Icons.notifications_none_outlined, color: AppColors.primary),
-      ],
+    return Builder(
+      builder: (context) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(
+            onPressed: () => Scaffold.of(context).openDrawer(),
+            icon: const CircleAvatar(
+              radius: 18,
+              backgroundColor: Color(0xFFE0F2F1),
+              child: Icon(Icons.menu, color: AppColors.primary, size: 20),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Good morning,', style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+                const Text('Sadek', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+          const Icon(Icons.notifications_none, size: 24, color: AppColors.textMain),
+        ],
+      ),
     );
   }
 
@@ -107,32 +116,35 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAIRecommendationCard() {
+  Widget _buildAIRecommendationCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: const Color(0xFFE0F2F1),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Row(
-        children: [
-          const Icon(Icons.auto_awesome, color: AppColors.primary),
-          const SizedBox(width: 16),
-          Expanded(
-            child: RichText(
-              text: const TextSpan(
-                text: 'AI Recommendation\n',
-                style: TextStyle(color: AppColors.textMain, fontWeight: FontWeight.bold, fontSize: 14),
-                children: [
-                  TextSpan(
-                    text: 'Focus on Medieval Bengal today to boost your score by 15%',
-                    style: TextStyle(fontWeight: FontWeight.normal, fontSize: 12, color: AppColors.textSecondary),
-                  ),
-                ],
+      child: InkWell(
+        onTap: () => Navigator.pushNamed(context, AppRouter.aiAssistant),
+        child: Row(
+          children: [
+            const Icon(Icons.auto_awesome, color: AppColors.primary),
+            const SizedBox(width: 16),
+            Expanded(
+              child: RichText(
+                text: const TextSpan(
+                  text: 'AI Recommendation\n',
+                  style: TextStyle(color: AppColors.textMain, fontWeight: FontWeight.bold, fontSize: 14),
+                  children: [
+                    TextSpan(
+                      text: 'Focus on Medieval Bengal today to boost your score by 15%',
+                      style: TextStyle(fontWeight: FontWeight.normal, fontSize: 12, color: AppColors.textSecondary),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
