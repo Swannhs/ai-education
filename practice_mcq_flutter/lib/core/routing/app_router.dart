@@ -28,12 +28,15 @@ import '../../features/practice/screens/wrong_answers_screen.dart';
 
 import '../../features/practice/screens/lesson_screen.dart';
 
+import '../../features/auth/screens/verify_code_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
   static const String signup = '/signup';
   static const String forgotPassword = '/forgot-password';
   static const String verifyEmail = '/verify-email';
+  static const String verifyCode = '/verify-code';
   static const String home = '/home';
   static const String practice = '/practice';
   static const String practiceResult = '/practice-result';
@@ -52,6 +55,7 @@ class AppRouter {
     signup: (context) => const SignUpScreen(),
     forgotPassword: (context) => const ForgotPasswordScreen(),
     verifyEmail: (context) => const VerifyEmailScreen(),
+    verifyCode: (context) => const VerifyCodeScreen(),
     home: (context) => const HomeScreen(),
     practice: (context) => const PracticeScreen(),
     practiceResult: (context) => const PracticeResultScreen(),
@@ -77,6 +81,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
       case verifyEmail:
         return MaterialPageRoute(builder: (_) => const VerifyEmailScreen());
+      case verifyCode:
+        return MaterialPageRoute(builder: (_) => const VerifyCodeScreen());
       case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case practice:

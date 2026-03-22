@@ -51,7 +51,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               PrimaryButton(
                 text: 'Send Code',
                 onPressed: () {
-                  // TODO: Send code logic
+                  Navigator.pushNamed(context, AppRouter.verifyCode);
                 },
               ),
               const SizedBox(height: 40),
