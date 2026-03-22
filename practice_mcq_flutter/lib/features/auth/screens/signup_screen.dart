@@ -47,7 +47,7 @@ class SignUpScreen extends StatelessWidget {
                 text: 'Sign Up',
                 onPressed: () {
                   // Navigate to Home or Verify screen
-                  Navigator.pushReplacementNamed(context, AppRouter.home);
+                  Navigator.pushNamed(context, AppRouter.verifyEmail);
                 },
               ),
               const SizedBox(height: 32),

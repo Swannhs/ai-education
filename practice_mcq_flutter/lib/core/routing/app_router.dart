@@ -20,15 +20,21 @@ import '../../features/practice/screens/learn_library_screen.dart';
 
 import '../../features/practice/screens/practice_result_screen.dart';
 
+import '../../features/auth/screens/verify_email_screen.dart';
+
+import '../../features/practice/screens/topic_list_screen.dart';
+
 class AppRouter {
   static const String splash = '/';
   static const String login = '/login';
   static const String signup = '/signup';
   static const String forgotPassword = '/forgot-password';
+  static const String verifyEmail = '/verify-email';
   static const String home = '/home';
   static const String practice = '/practice';
   static const String practiceResult = '/practice-result';
   static const String subjectDetail = '/subject-detail';
+  static const String topicList = '/topic-list';
   static const String testList = '/test-list';
   static const String profile = '/profile';
   static const String routine = '/routine';
@@ -39,10 +45,12 @@ class AppRouter {
     login: (context) => const LoginScreen(),
     signup: (context) => const SignUpScreen(),
     forgotPassword: (context) => const ForgotPasswordScreen(),
+    verifyEmail: (context) => const VerifyEmailScreen(),
     home: (context) => const HomeScreen(),
     practice: (context) => const PracticeScreen(),
     practiceResult: (context) => const PracticeResultScreen(),
     subjectDetail: (context) => const SubjectDetailScreen(),
+    topicList: (context) => const TopicListScreen(),
     testList: (context) => const TestListScreen(),
     profile: (context) => const ProfileScreen(),
     routine: (context) => const DailyRoutineScreen(),
@@ -59,6 +67,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
       case forgotPassword:
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
+      case verifyEmail:
+        return MaterialPageRoute(builder: (_) => const VerifyEmailScreen());
       case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case practice:
@@ -67,6 +77,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const PracticeResultScreen());
       case subjectDetail:
         return MaterialPageRoute(builder: (_) => const SubjectDetailScreen());
+      case topicList:
+        return MaterialPageRoute(builder: (_) => const TopicListScreen());
       case testList:
         return MaterialPageRoute(builder: (_) => const TestListScreen());
       case profile:
