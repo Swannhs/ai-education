@@ -131,8 +131,8 @@ class AppRouter {
     questionPalette: (context) => const QuestionPaletteScreen(),
   };
 
-  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    switch (settings.name) {
+  static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
+    switch (routeSettings.name) {
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case login:
@@ -208,7 +208,7 @@ class AppRouter {
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(child: Text('No route defined for ${settings.name}')),
+            body: Center(child: Text('No route defined for ${routeSettings.name}')),
           ),
         );
     }

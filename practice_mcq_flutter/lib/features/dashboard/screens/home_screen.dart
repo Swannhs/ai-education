@@ -31,11 +31,11 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 24),
               _buildLiveTestCard(),
               const SizedBox(height: 24),
-              _buildWeakTopicsCard(),
+              _buildWeakTopicsCard(context),
               const SizedBox(height: 24),
               _buildSectionHeader('Explore Subjects', 'View All'),
               const SizedBox(height: 16),
-              _buildSubjectsList(),
+              _buildSubjectsList(context),
             ],
           ),
         ),
@@ -204,7 +204,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildWeakTopicsCard() {
+  Widget _buildWeakTopicsCard(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -241,7 +241,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSubjectsList() {
+  Widget _buildSubjectsList(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -261,7 +261,7 @@ class HomeScreen extends StatelessWidget {
         width: 140,
         margin: const EdgeInsets.only(right: 16),
         padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), border: const BorderSide(color: AppColors.border)),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), border: Border.all(color: AppColors.border)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

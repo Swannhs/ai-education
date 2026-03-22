@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../core/routing/app_router.dart';
 import '../../../shared/widgets/primary_button.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {

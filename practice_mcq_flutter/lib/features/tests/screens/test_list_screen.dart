@@ -17,13 +17,14 @@ class TestListScreen extends StatelessWidget {
             children: [
               _buildHeader(),
               const SizedBox(height: 24),
-              _buildFeaturedMockTest(),
+              _buildFeaturedMockTest(context),
               const SizedBox(height: 24),
               _buildAIRecommendationCard(),
               const SizedBox(height: 32),
               _buildTabs(),
               const SizedBox(height: 24),
               _buildTestCard(
+                context,
                 title: 'General Knowledge Daily Quiz',
                 subtitle: '30m • 40 Qs',
                 status: 'LIVE',
@@ -33,6 +34,7 @@ class TestListScreen extends StatelessWidget {
                 isLive: true,
               ),
               _buildTestCard(
+                context,
                 title: 'Math Practice Test #4',
                 subtitle: 'Today 9:00 PM • 45m',
                 status: 'UPCOMING',
@@ -41,6 +43,7 @@ class TestListScreen extends StatelessWidget {
                 buttonLabel: 'Remind Me',
               ),
               _buildTestCard(
+                context,
                 title: 'English Grammar - Parts of Speech',
                 subtitle: 'Oct 12, 2023 • 25 Qs',
                 status: 'ARCHIVE',
@@ -69,7 +72,7 @@ class TestListScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFeaturedMockTest() {
+  Widget _buildFeaturedMockTest(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
@@ -178,7 +181,8 @@ class TestListScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTestCard({
+  Widget _buildTestCard(
+    BuildContext context, {
     required String title,
     required String subtitle,
     required String status,
