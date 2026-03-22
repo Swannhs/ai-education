@@ -1,46 +1,36 @@
 import 'package:flutter/material.dart';
+
+// Auth
 import '../../features/auth/screens/splash_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
-import '../../features/dashboard/screens/home_screen.dart';
-
-import '../../features/practice/screens/practice_screen.dart';
-
 import '../../features/auth/screens/signup_screen.dart';
 import '../../features/auth/screens/forgot_password_screen.dart';
-
-import '../../features/practice/screens/subject_detail_screen.dart';
-
-import '../../features/tests/screens/test_list_screen.dart';
-
-import '../../features/profile/screens/profile_screen.dart';
-
-import '../../features/routine/screens/daily_routine_screen.dart';
-
-import '../../features/practice/screens/learn_library_screen.dart';
-
-import '../../features/practice/screens/practice_result_screen.dart';
-
 import '../../features/auth/screens/verify_email_screen.dart';
-
-import '../../features/practice/screens/topic_list_screen.dart';
-
-import '../../features/practice/screens/wrong_answers_screen.dart';
-
-import '../../features/practice/screens/lesson_screen.dart';
-
 import '../../features/auth/screens/verify_code_screen.dart';
-
-import '../../features/tests/screens/test_detail_screen.dart';
-
-import '../../features/tests/screens/live_test_screen.dart';
-
-import '../../features/tests/screens/test_result_screen.dart';
-
-import '../../features/analytics/screens/analytics_screen.dart';
-
-import '../../features/profile/screens/settings_screen.dart';
 import '../../features/auth/screens/new_password_screen.dart';
 import '../../features/auth/screens/exam_onboarding_screen.dart';
+
+// Dashboard
+import '../../features/dashboard/screens/home_screen.dart';
+
+// Learn (New hierarchy)
+import '../../features/learn/presentation/screens/subject_detail_screen.dart';
+import '../../features/learn/presentation/screens/topic_list_screen.dart';
+import '../../features/learn/presentation/screens/lesson_content_viewer_screen.dart';
+
+// Legacy/Placeholder - these may need refactoring later
+import '../../features/practice/presentation/screens/practice_screen.dart';
+import '../../features/tests/screens/test_list_screen.dart';
+import '../../features/profile/screens/profile_screen.dart';
+import '../../features/routine/screens/daily_routine_screen.dart';
+import '../../features/practice/screens/learn_library_screen.dart';
+import '../../features/practice/presentation/screens/practice_result_screen.dart';
+import '../../features/practice/screens/wrong_answers_screen.dart';
+import '../../features/tests/screens/test_detail_screen.dart';
+import '../../features/tests/screens/live_test_screen.dart';
+import '../../features/tests/screens/test_result_screen.dart';
+import '../../features/analytics/presentation/screens/analytics_screen.dart';
+import '../../features/profile/screens/settings_screen.dart';
 import '../../features/practice/screens/favorites_library_screen.dart';
 import '../../features/tests/screens/past_papers_screen.dart';
 import '../../features/chat/screens/ai_assistant_chat_screen.dart';
@@ -53,9 +43,6 @@ import '../../features/analytics/screens/subject_performance_screen.dart';
 import '../../features/analytics/screens/weak_topics_analysis_screen.dart';
 import '../../features/analytics/screens/test_history_screen.dart';
 import '../../features/tests/screens/merit_list_screen.dart';
-
-import '../../features/practice/screens/lesson_content_viewer_screen.dart';
-import '../../features/practice/screens/chapter_list_screen.dart';
 import '../../features/analytics/screens/progress_trends_screen.dart';
 import '../../features/profile/screens/help_faq_screen.dart';
 import '../../features/chat/screens/ai_recommendations_screen.dart';
@@ -94,7 +81,6 @@ class AppRouter {
   static const String routine = '/routine';
   static const String learnLibrary = '/learn-library';
   static const String lessonContentViewer = '/lesson-content-viewer';
-  static const String chapterList = '/chapter-list';
   static const String progressTrends = '/progress-trends';
   static const String helpFaq = '/help-faq';
   static const String aiRecommendations = '/ai-recommendations';
@@ -103,137 +89,66 @@ class AppRouter {
   static const String reviewSubmission = '/review-submission';
   static const String questionPalette = '/question-palette';
 
-  static Map<String, WidgetBuilder> get routes => {
-    splash: (context) => const SplashScreen(),
-    login: (context) => const LoginScreen(),
-    signup: (context) => const SignUpScreen(),
-    forgotPassword: (context) => const ForgotPasswordScreen(),
-    verifyEmail: (context) => const VerifyEmailScreen(),
-    verifyCode: (context) => const VerifyCodeScreen(),
-    newPassword: (context) => const NewPasswordScreen(),
-    onboarding: (context) => const ExamOnboardingScreen(),
-    home: (context) => const HomeScreen(),
-    practice: (context) => const PracticeScreen(),
-    practiceResult: (context) => const PracticeResultScreen(),
-    subjectDetail: (context) => const SubjectDetailScreen(),
-    topicList: (context) => const TopicListScreen(),
-    wrongAnswers: (context) => const WrongAnswersScreen(),
-    favorites: (context) => const FavoritesLibraryScreen(),
-    lesson: (context) => const LessonScreen(),
-    testList: (context) => const TestListScreen(),
-    testDetail: (context) => const TestDetailScreen(),
-    pastPapers: (context) => const PastPapersScreen(),
-    liveTest: (context) => const LiveTestScreen(),
-    testResult: (context) => const TestResultScreen(),
-    meritList: (context) => const MeritListScreen(),
-    analytics: (context) => const AnalyticsScreen(),
-    subjectPerformance: (context) => const SubjectPerformanceScreen(),
-    weakTopics: (context) => const WeakTopicsAnalysisScreen(),
-    testHistory: (context) => const TestHistoryScreen(),
-    profile: (context) => const ProfileScreen(),
-    settings: (context) => const SettingsScreen(),
-    subscription: (context) => const SubscriptionPackagesScreen(),
-    examPreferences: (context) => const ExamPreferencesScreen(),
-    routine: (context) => const DailyRoutineScreen(),
-    learnLibrary: (context) => const LearnLibraryScreen(),
-    aiAssistant: (context) => const AIAssistantChatScreen(),
-    voiceAssistant: (context) => const VoiceAssistantScreen(),
-    reviewSubmission: (context) => const ReviewSubmissionScreen(),
-    chapterList: (context) => const ChapterListScreen(),
-    progressTrends: (context) => const ProgressTrendsScreen(),
-    helpFaq: (context) => const HelpFAQScreen(),
-    aiRecommendations: (context) => const AIRecommendationsScreen(),
-    lessonContentViewer: (context) => const LessonContentViewerScreen(),
-  };
-
-  static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
-    switch (routeSettings.name) {
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case signup:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
-      case forgotPassword:
-        return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
-      case verifyEmail:
-        return MaterialPageRoute(builder: (_) => const VerifyEmailScreen());
-      case verifyCode:
-        return MaterialPageRoute(builder: (_) => const VerifyCodeScreen());
-      case newPassword:
-        return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
       case onboarding:
         return MaterialPageRoute(builder: (_) => const ExamOnboardingScreen());
       case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case practice:
-        return MaterialPageRoute(builder: (_) => const PracticeScreen());
-      case practiceResult:
-        return MaterialPageRoute(builder: (_) => const PracticeResultScreen());
+      
       case subjectDetail:
-        return MaterialPageRoute(builder: (_) => const SubjectDetailScreen());
+        final String? id = settings.arguments as String?;
+        return MaterialPageRoute(builder: (_) => SubjectDetailScreen(subjectId: id ?? '1'));
+      
       case topicList:
-        return MaterialPageRoute(builder: (_) => const TopicListScreen());
-      case wrongAnswers:
-        return MaterialPageRoute(builder: (_) => const WrongAnswersScreen());
-      case favorites:
-        return MaterialPageRoute(builder: (_) => const FavoritesLibraryScreen());
+        final String? id = settings.arguments as String?;
+        return MaterialPageRoute(builder: (_) => TopicListScreen(chapterId: id ?? 'c1'));
+      
       case lesson:
-        return MaterialPageRoute(builder: (_) => const LessonScreen());
-      case testList:
-        return MaterialPageRoute(builder: (_) => const TestListScreen());
-      case testDetail:
-        return MaterialPageRoute(builder: (_) => const TestDetailScreen());
-      case pastPapers:
-        return MaterialPageRoute(builder: (_) => const PastPapersScreen());
-      case liveTest:
-        return MaterialPageRoute(builder: (_) => const LiveTestScreen());
-      case testResult:
-        return MaterialPageRoute(builder: (_) => const TestResultScreen());
-      case meritList:
-        return MaterialPageRoute(builder: (_) => const MeritListScreen());
+        final String? id = settings.arguments as String?;
+        return MaterialPageRoute(builder: (_) => LessonContentViewerScreen(topicId: id ?? 't1'));
+
+      case practice:
+        final String? id = settings.arguments as String?;
+        return MaterialPageRoute(builder: (_) => PracticeScreen(topicId: id ?? 't1'));
+
+      case practiceResult:
+        final int score = settings.arguments as int? ?? 0;
+        return MaterialPageRoute(builder: (_) => PracticeResultScreen(score: score));
       case analytics:
         return MaterialPageRoute(builder: (_) => const AnalyticsScreen());
-      case subjectPerformance:
-        return MaterialPageRoute(builder: (_) => const SubjectPerformanceScreen());
-      case weakTopics:
-        return MaterialPageRoute(builder: (_) => const WeakTopicsAnalysisScreen());
-      case testHistory:
-        return MaterialPageRoute(builder: (_) => const TestHistoryScreen());
-      case profile:
-        return MaterialPageRoute(builder: (_) => const ProfileScreen());
-      case settings:
-        return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case subscription:
         return MaterialPageRoute(builder: (_) => const SubscriptionPackagesScreen());
-      case examPreferences:
-        return MaterialPageRoute(builder: (_) => const ExamPreferencesScreen());
+      case aiAssistant:
+        return MaterialPageRoute(builder: (_) => const AIAssistantChatScreen());
+      case testList:
+        return MaterialPageRoute(builder: (_) => const TestListScreen());
+      case testHistory:
+        return MaterialPageRoute(builder: (_) => const TestHistoryScreen());
+      case helpFaq:
+        return MaterialPageRoute(builder: (_) => const HelpFAQScreen());
       case routine:
         return MaterialPageRoute(builder: (_) => const DailyRoutineScreen());
       case learnLibrary:
         return MaterialPageRoute(builder: (_) => const LearnLibraryScreen());
-      case lessonContentViewer:
-        return MaterialPageRoute(builder: (_) => const LessonContentViewerScreen());
-      case chapterList:
-        return MaterialPageRoute(builder: (_) => const ChapterListScreen());
-      case progressTrends:
-        return MaterialPageRoute(builder: (_) => const ProgressTrendsScreen());
-      case helpFaq:
-        return MaterialPageRoute(builder: (_) => const HelpFAQScreen());
       case aiRecommendations:
         return MaterialPageRoute(builder: (_) => const AIRecommendationsScreen());
-      case aiAssistant:
-        return MaterialPageRoute(builder: (_) => const AIAssistantChatScreen());
-      case voiceAssistant:
-        return MaterialPageRoute(builder: (_) => const VoiceAssistantScreen());
-      case reviewSubmission:
-        return MaterialPageRoute(builder: (_) => const ReviewSubmissionScreen());
-      case questionPalette:
-        return MaterialPageRoute(builder: (_) => const QuestionPaletteScreen());
+      case examPreferences:
+        return MaterialPageRoute(builder: (_) => const ExamPreferencesScreen());
+      case wrongAnswers:
+        return MaterialPageRoute(builder: (_) => const WrongAnswersScreen());
+      
+      // Default fallback
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(child: Text('No route defined for ${routeSettings.name}')),
+            body: Center(child: Text('No route defined for ${settings.name}')),
           ),
         );
     }

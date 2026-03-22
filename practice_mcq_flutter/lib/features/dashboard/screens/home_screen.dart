@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/app_bottom_nav.dart';
@@ -6,48 +7,56 @@ import '../../../shared/widgets/app_drawer.dart';
 import '../../practice/screens/practice_screen.dart';
 import '../../../core/services/ai_service.dart';
 import '../../../core/models/ai_response.dart';
+import '../../auth/presentation/providers/auth_provider.dart';
+import '../presentation/providers/dashboard_provider.dart';
+import '../domain/dashboard_data.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(authProvider).user;
+    final dashboardAsync = ref.watch(dashboardProvider);
+
     return Scaffold(
       drawer: const AppDrawer(),
       bottomNavigationBar: _buildBottomNav(),
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(),
-              const SizedBox(height: 24),
-              _buildCurrentCourseCard(),
-              const SizedBox(height: 20),
-              _buildAIRecommendationCard(context),
-              const SizedBox(height: 24),
-              _buildSectionHeader('Today\'s Routine', '3 of 4 done'),
-              const SizedBox(height: 12),
-              _buildRoutineItem('Daily MCQ Challenge', 'General Knowledge • Completed', true),
-              _buildRoutineItem('Bangla Literature - Ch 4', 'Ancient & Medieval era', false),
-              _buildRoutineItem('English Grammar: Tense', 'Practice Set 12', false),
-              const SizedBox(height: 24),
-              _buildLiveTestCard(),
-              const SizedBox(height: 24),
-              _buildWeakTopicsCard(context),
-              const SizedBox(height: 24),
-              _buildSectionHeader('Explore Subjects', 'View All'),
-              const SizedBox(height: 16),
-              _buildSubjectsList(context),
-            ],
+        child: dashboardAsync.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (err, stack) => Center(child: Text('Error: $err')),
+          data: (data) => SingleChildScrollView(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(user?.name ?? 'Aspirant'),
+                const SizedBox(height: 24),
+                _buildCurrentCourseCard(data),
+                const SizedBox(height: 20),
+                _buildAIRecommendationCard(context, data.aiRecommendation),
+                const SizedBox(height: 24),
+                _buildSectionHeader('Today\'s Routine', '${data.todayTasks.where((t) => t.isCompleted).length} of ${data.todayTasks.length} done'),
+                const SizedBox(height: 12),
+                ...data.todayTasks.map((task) => _buildRoutineItem(task.title, task.subtitle, task.isCompleted)),
+                const SizedBox(height: 24),
+                _buildLiveTestCard(),
+                const SizedBox(height: 24),
+                _buildWeakTopicsCard(context),
+                const SizedBox(height: 24),
+                _buildSectionHeader('Explore Subjects', 'View All'),
+                const SizedBox(height: 16),
+                _buildSubjectsList(context, data.subjects),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(String name) {
     return Builder(
       builder: (context) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,7 +75,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text('Good morning,', style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
-                const Text('Sadek', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ],
             ),
           ),
@@ -76,11 +85,11 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCurrentCourseCard() {
+  Widget _buildCurrentCourseCard(DashboardData data) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFFF1F8E9), // Very light green
+        color: const Color(0xFFF1F8E9),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -88,18 +97,18 @@ class HomeScreen extends StatelessWidget {
         children: [
           const Text('CURRENT COURSE', style: TextStyle(color: AppColors.primary, fontSize: 10, fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          const Text('BCS Foundation Course', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(data.currentCourseTitle, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Course Progress', style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
-              Text('65%', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+              const Text('Course Progress', style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+              Text('${(data.overallProgress * 100).toInt()}%', style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
             ],
           ),
           const SizedBox(height: 8),
           LinearProgressIndicator(
-            value: 0.65,
+            value: data.overallProgress,
             backgroundColor: Colors.white,
             borderRadius: BorderRadius.circular(10),
             minHeight: 8,
@@ -118,7 +127,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAIRecommendationCard(BuildContext context) {
+  Widget _buildAIRecommendationCard(BuildContext context, String? recommendation) {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFF00B074), // Primary Green for AI
@@ -146,13 +155,13 @@ class HomeScreen extends StatelessWidget {
                   child: const Icon(Icons.psychology, color: Colors.white, size: 24),
                 ),
                 const SizedBox(width: 16),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('AI SYSTEM SUGGESTION', style: TextStyle(color: Colors.white70, fontSize: 9, fontWeight: FontWeight.bold, letterSpacing: 1.0)),
-                      SizedBox(height: 4),
-                      Text('Focus on Medieval Bengal today to boost score by 15%', style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold, height: 1.3)),
+                      const Text('AI SYSTEM SUGGESTION', style: TextStyle(color: Colors.white70, fontSize: 9, fontWeight: FontWeight.bold, letterSpacing: 1.0)),
+                      const SizedBox(height: 4),
+                      Text(recommendation ?? 'Preparing your next action...', style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold, height: 1.3)),
                     ],
                   ),
                 ),
@@ -336,17 +345,22 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSubjectsList(BuildContext context) {
+  Widget _buildSubjectsList(BuildContext context, List<SubjectProgress> subjects) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
-          _buildSubjectItem(context, 'Bangla', Icons.book, const Color(0xFFE3F2FD)),
-          _buildSubjectItem(context, 'English', Icons.translate, const Color(0xFFFFF3E0)),
-          _buildSubjectItem(context, 'General Math', Icons.calculate, const Color(0xFFF3E5F5)),
-        ],
+        children: subjects.map((s) => _buildSubjectItem(context, s.name, _getIcon(s.icon), const Color(0xFFE3F2FD))).toList(),
       ),
     );
+  }
+
+  IconData _getIcon(String icon) {
+    switch (icon) {
+      case 'book': return Icons.book;
+      case 'translate': return Icons.translate;
+      case 'calculate': return Icons.calculate;
+      default: return Icons.school;
+    }
   }
 
   Widget _buildSubjectItem(BuildContext context, String name, IconData icon, Color color) {

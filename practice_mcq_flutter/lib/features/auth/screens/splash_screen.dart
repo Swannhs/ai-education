@@ -1,30 +1,26 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/routing/app_router.dart';
+import '../presentation/providers/auth_provider.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Listen to auth state changes to navigate
+    ref.listen<AuthState>(authProvider, (previous, next) {
+      if (!next.isLoading) {
+        if (next.user != null) {
+          Navigator.pushReplacementNamed(context, AppRouter.home);
+        } else if (!next.onboardingComplete) {
+          Navigator.pushReplacementNamed(context, AppRouter.examPreferences);
+        } else {
+          Navigator.pushReplacementNamed(context, AppRouter.login);
+        }
+      }
+    });
 
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    _navigateToNext();
-  }
-
-  _navigateToNext() async {
-    await Future.delayed(const Duration(seconds: 3));
-    if (mounted) {
-      Navigator.pushReplacementNamed(context, AppRouter.examPreferences);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(

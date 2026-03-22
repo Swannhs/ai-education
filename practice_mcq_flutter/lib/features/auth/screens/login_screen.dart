@@ -1,14 +1,44 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/routing/app_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../shared/widgets/primary_button.dart';
 import '../../../shared/widgets/social_button.dart';
+import '../presentation/providers/auth_provider.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends ConsumerState<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final authState = ref.watch(authProvider);
+
+    // Listen to success state for navigation
+    ref.listen<AuthState>(authProvider, (previous, next) {
+      if (next.user != null) {
+        Navigator.of(context).pushReplacementNamed(AppRouter.home);
+      }
+      if (next.error != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.error!), backgroundColor: Colors.red),
+        );
+      }
+    });
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -35,10 +65,10 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               _buildLabel('Email Address'),
-              _buildEmailField(),
+              _buildEmailField(_emailController),
               const SizedBox(height: 20),
               _buildLabel('Password'),
-              _buildPasswordField(),
+              _buildPasswordField(_passwordController),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
@@ -47,12 +77,18 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              PrimaryButton(
-                text: 'Sign In',
-                onPressed: () {
-                  Navigator.of(context).pushReplacementNamed(AppRouter.home);
-                },
-              ),
+              if (authState.isLoading)
+                const Center(child: CircularProgressIndicator())
+              else
+                PrimaryButton(
+                  text: 'Sign In',
+                  onPressed: () {
+                    ref.read(authProvider.notifier).login(
+                          _emailController.text,
+                          _passwordController.text,
+                        );
+                  },
+                ),
               const SizedBox(height: 32),
               _buildDivider(),
               const SizedBox(height: 32),
@@ -118,19 +154,21 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEmailField() {
-    return const TextField(
-      decoration: InputDecoration(
+  Widget _buildEmailField(TextEditingController controller) {
+    return TextField(
+      controller: controller,
+      decoration: const InputDecoration(
         hintText: 'Enter your email',
         prefixIcon: Icon(Icons.email_outlined),
       ),
     );
   }
 
-  Widget _buildPasswordField() {
-    return const TextField(
+  Widget _buildPasswordField(TextEditingController controller) {
+    return TextField(
+      controller: controller,
       obscureText: true,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: '........',
         prefixIcon: Icon(Icons.lock_outline),
         suffixIcon: Icon(Icons.visibility_off_outlined),

@@ -1,15 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/routing/app_router.dart';
+import '../presentation/providers/auth_provider.dart';
 
-class ExamOnboardingScreen extends StatefulWidget {
+class ExamOnboardingScreen extends ConsumerStatefulWidget {
   const ExamOnboardingScreen({super.key});
 
   @override
-  State<ExamOnboardingScreen> createState() => _ExamOnboardingScreenState();
+  ConsumerState<ExamOnboardingScreen> createState() => _ExamOnboardingScreenState();
 }
 
-class _ExamOnboardingScreenState extends State<ExamOnboardingScreen> {
+class _ExamOnboardingScreenState extends ConsumerState<ExamOnboardingScreen> {
   String selectedExam = 'BCS';
   String selectedProficiency = 'Beginner';
 
@@ -60,7 +61,12 @@ class _ExamOnboardingScreenState extends State<ExamOnboardingScreen> {
             _buildInfoBox(),
             const SizedBox(height: 48),
             ElevatedButton(
-              onPressed: () => Navigator.pushReplacementNamed(context, AppRouter.home),
+              onPressed: () async {
+                await ref.read(authProvider.notifier).completeOnboarding();
+                if (mounted) {
+                  Navigator.pushReplacementNamed(context, AppRouter.login);
+                }
+              },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 56),
                 backgroundColor: const Color(0xFF00B074),

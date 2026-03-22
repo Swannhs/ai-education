@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/routing/app_router.dart';
 import '../../core/theme/app_theme.dart';
+import '../../features/auth/presentation/providers/auth_provider.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends ConsumerWidget {
   const AppDrawer({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(authProvider).user;
+
     return Drawer(
       child: Column(
         children: [
-          _buildDrawerHeader(),
+          _buildDrawerHeader(user),
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,
@@ -30,8 +34,11 @@ class AppDrawer extends StatelessWidget {
                 ListTile(
                   leading: const Icon(Icons.logout, color: Colors.red),
                   title: const Text('Logout', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
-                  onTap: () {
-                    Navigator.pushReplacementNamed(context, AppRouter.login);
+                  onTap: () async {
+                    await ref.read(authProvider.notifier).logout();
+                    if (context.mounted) {
+                      Navigator.pushNamedAndRemoveUntil(context, AppRouter.login, (route) => false);
+                    }
                   },
                 ),
               ],
@@ -43,7 +50,7 @@ class AppDrawer extends StatelessWidget {
     );
   }
 
-  Widget _buildDrawerHeader() {
+  Widget _buildDrawerHeader(dynamic user) {
     return DrawerHeader(
       decoration: const BoxDecoration(
         color: Color(0xFF004D40),
@@ -61,14 +68,15 @@ class AppDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Anisur Rahman', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-                const Text('BCS Aspirant', style: TextStyle(color: Colors.white70, fontSize: 12)),
+                Text(user?.name ?? 'Aspirant', style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                Text('${user?.targetExam ?? "No Exam"} Aspirant', style: const TextStyle(color: Colors.white70, fontSize: 12)),
                 const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                  decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(4)),
-                  child: const Text('PREMIUM', style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold, color: Colors.black)),
-                ),
+                if (user?.isPremium ?? false)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                    decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(4)),
+                    child: const Text('PREMIUM', style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold, color: Colors.black)),
+                  ),
               ],
             ),
           ),
@@ -89,13 +97,13 @@ class AppDrawer extends StatelessWidget {
   }
 
   Widget _buildDrawerFooter() {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
+    return const Padding(
+      padding: EdgeInsets.all(20.0),
       child: Column(
         children: [
-          const Text('GovPrep BD v1.0.0', style: TextStyle(color: Colors.grey, fontSize: 10)),
-          const SizedBox(height: 4),
-          const Text('Made with ❤️ in Bangladesh', style: TextStyle(color: Colors.grey, fontSize: 8)),
+          Text('GovPrep BD v1.0.0', style: TextStyle(color: Colors.grey, fontSize: 10)),
+          SizedBox(height: 4),
+          Text('Made with ❤️ in Bangladesh', style: TextStyle(color: Colors.grey, fontSize: 8)),
         ],
       ),
     );
